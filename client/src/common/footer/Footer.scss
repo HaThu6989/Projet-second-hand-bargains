@@ -1,0 +1,43 @@
+.container-footer{
+  margin-top: 100px;
+  background-color: black;
+  color: aliceblue;
+  padding: 20px;
+  a{
+    color: rgb(121, 155, 185);
+  }
+  li{
+    color: rgb(121, 155, 185);
+  }
+}
+
+.back-home{
+  border-bottom: 1px solid aliceblue;
+  margin-bottom: 15px;
+  .link{
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.about-contact-us{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  .link{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 650px) {
+  .about-contact-us{
+    flex-direction: column;
+    gap:15px
+  }
+}

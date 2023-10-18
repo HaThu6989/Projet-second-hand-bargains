@@ -1,0 +1,137 @@
+.container-auth{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    .title-auth{
+      background-image: url("../../assets/auth-background.avif");
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 92vh;
+      width: 40%;
+      h1{
+        font-size: 65px;
+        color: aliceblue;
+        text-align: right;
+        margin-top: 250px;
+        margin-right: 50px;
+      }
+    }
+
+    .form-auth{
+      height: 92vh;
+      width: 60%;
+      padding-top: 100px;
+      padding-left: 50px;
+      form{
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        input{
+          color:rgb(68, 74, 80) ;
+          font-size: 15px;
+          border-bottom: 2px solid #cbcfce;
+          padding: 3px;
+          width: 400px;
+        }
+        button{
+          background-color: #388f71;
+          color: #fafefd;
+          font-size: 18px;
+          font-weight:700;
+          padding: 10px;
+          border-radius: 5px;
+          cursor: pointer;
+          width: 100px;
+        }
+        button:hover{
+          background-color: #bac0be;
+          color: #43514c;
+        }
+        .signup{
+          display: flex;
+          flex-direction: row;
+          gap: 5px;
+          align-items: baseline;
+        }
+        .login{
+          display: flex;
+          flex-direction: column;
+          gap: 18px;
+          align-items: baseline;
+        }
+        .box-label-input{
+          label{
+            font-size: 18px;
+            font-weight: 700;
+            color: rgb(12, 133, 101);
+            width: 150px;
+          }
+        }
+      }
+
+    .return{
+      display: flex;
+      gap : 10px;
+      align-items: center;
+
+      p{
+        color: #53615c;
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      button{
+        color: #537a6d;
+        background-color: #c7e4dd;
+        font-size: 17px;
+        font-weight:700;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover{
+        background-color: #bac0be;
+        color: #43514c;
+      }
+    }
+    .return-login-signup{
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+@media(max-width:450px){
+  .container-auth{
+    flex-direction: column;
+    .title-auth{
+      background-image: none;
+      height: fit-content;
+      width: 100%;
+      h1{
+        margin-top: 20px;
+        margin-right: 0px;
+        text-align: center;
+        font-size: 50px;
+        color: #199a7c;
+      }
+    }
+    .form-auth{
+      padding-top: 10px;
+      padding-left: 30px;
+      width: 100%;
+      margin-bottom: 20px;
+      form{
+        .box-label-input{
+          flex-direction: column;
+        }
+        input, button {
+          width: 300px;
+        }
+      }
+    }
+  }
+}

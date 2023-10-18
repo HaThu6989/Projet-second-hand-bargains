@@ -1,0 +1,62 @@
+.container-CU-product{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 70px;
+  gap: 40px;
+  .title-CU-product{
+    font-size: 1.5em;
+    color: rgb(98, 178, 151);
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width:50vw;
+    .box-label-input{
+      display: flex;
+      align-items: first baseline;
+    }
+    label{
+      color: #43514c;
+      font-weight: 700;
+      font-size: 18px;
+      width: 120px;
+    }
+    input{
+      background-color: #f1f1f1;
+      width: 15rem;
+    }
+    button, input, select {
+      padding: 10px;
+      border-radius: 4px;
+      font-size: 17px
+    }
+    button{
+      margin-top: 20px;
+      color: aliceblue;
+      font-weight: 700;
+      background-color: rgb(98, 178, 151);
+      width: 100px;
+      cursor: pointer;
+    }
+    button:hover{
+      background-color: #bac0be;
+      color: #43514c;
+    }
+  }
+}
+
+@media(max-width:450px){
+  .container-CU-product{
+    margin-top: 10px;
+    margin-left: 10px;
+    align-items: start;
+  }
+  .description{
+    visibility: hidden;
+  }
+  .box-label-input{
+    flex-direction: column;
+  }
+}

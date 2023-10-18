@@ -1,0 +1,28 @@
+.container-search{
+  display: flex;
+  position: relative;
+
+  input{
+    background-color: #f6f9fc;
+    padding: 0px 30px;
+    border-radius: 20px;
+    height: 6vh;
+    width: 25vw;
+  }
+
+  button{
+    position: absolute;
+    right: 20px;
+    top: 2vh;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 990px) {
+  .container-search{
+    button{
+    right: 3px;
+   }
+  }
+ 
+}

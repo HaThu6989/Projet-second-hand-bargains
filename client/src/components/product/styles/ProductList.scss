@@ -1,0 +1,39 @@
+.remove-favourite {
+  background-image: url("../../../assets/heart-full.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-color: transparent;
+  height: 50px;
+  width: 50px;
+  border: none;
+}
+ 
+.add-favourite {
+  background-image: url("../../../assets/heart-empty.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-color: transparent;
+  height: 50px;
+  width: 50px;
+  border: none;
+}
+
+
+.product-list{
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h1{
+    margin-bottom: 20px;
+  }
+
+  .product-card{
+    display: flex;
+    align-items: center;
+  }
+}
