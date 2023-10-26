@@ -3,8 +3,13 @@
 @import "../src/common/footer/Footer.scss";
 @import "../src/components/auth/Auth.scss";
 @import "../src/components/product/styles/Product.scss";
+@import "../src/components/user/styles/UserPage.scss";
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+// to fix bugs : ResizeObserver loop completed with undelivered notifications
+iframe#webpack-dev-server-client-overlay{display:none!important}
+
 * {
   padding: 0;
   margin: 0;

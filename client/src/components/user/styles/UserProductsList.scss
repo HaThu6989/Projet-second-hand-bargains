@@ -1,0 +1,41 @@
+.user-list-products{
+  h3 {
+    font-size: 1.5em;
+    color: rgb(98, 178, 151);
+    margin-bottom: 10px;
+  }
+}
+
+.user-list-products-table{
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+  width: 700px;
+  text-align: center;
+
+  tr {
+    border-bottom: 1px solid #dddddd;
+    word-wrap: break-word;
+    th {
+      background: #388f71;
+      color: #fff;
+      font-weight: bold;
+      padding: 10px 0;
+    }
+    td {
+      padding: 10px 0;
+    }
+  }
+
+  tr:hover {
+    background: #dddddd;
+  }
+}
+
+
+@media(max-width:730px){
+  .user-list-products-table{
+    width: 350px;
+  }
+} 

@@ -17,94 +17,97 @@
         margin-right: 50px;
       }
     }
+}
 
-    .form-auth{
-      height: 92vh;
-      width: 60%;
-      padding-top: 100px;
-      padding-left: 50px;
-      form{
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-        margin-top: 20px;
-        margin-bottom: 40px;
-        input{
-          color:rgb(68, 74, 80) ;
-          font-size: 15px;
-          border-bottom: 2px solid #cbcfce;
-          padding: 3px;
-          width: 400px;
-        }
-        button{
-          background-color: #388f71;
-          color: #fafefd;
-          font-size: 18px;
-          font-weight:700;
-          padding: 10px;
-          border-radius: 5px;
-          cursor: pointer;
-          width: 100px;
-        }
-        button:hover{
-          background-color: #bac0be;
-          color: #43514c;
-        }
-        .signup{
-          display: flex;
-          flex-direction: row;
-          gap: 5px;
-          align-items: baseline;
-        }
-        .login{
-          display: flex;
-          flex-direction: column;
-          gap: 18px;
-          align-items: baseline;
-        }
-        .box-label-input{
-          label{
-            font-size: 18px;
-            font-weight: 700;
-            color: rgb(12, 133, 101);
-            width: 150px;
-          }
-        }
-      }
+.error {
+  color: rgb(209, 140, 140);
+}
 
-    .return{
+.form-auth{
+  height: 92vh;
+  width: 60%;
+  padding-top: 100px;
+  padding-left: 50px;
+  form{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    input{
+      color:rgb(68, 74, 80) ;
+      font-size: 15px;
+      border-bottom: 2px solid #cbcfce;
+      padding: 3px;
+      width: 400px;
+    }
+    button{
+      background-color: #388f71;
+      color: #fafefd;
+      font-size: 18px;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 120px;
+    }
+    button:hover{
+      background-color: #bac0be;
+      color: #43514c;
+    }
+    .signup{
       display: flex;
-      gap : 10px;
-      align-items: center;
-
-      p{
-        color: #53615c;
-        font-size: 15px;
-        font-weight: 600;
-      }
-
-      button{
-        color: #537a6d;
-        background-color: #c7e4dd;
-        font-size: 17px;
-        font-weight:700;
-        padding: 10px;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-      button:hover{
-        background-color: #bac0be;
-        color: #43514c;
+      flex-direction: row;
+      gap: 5px;
+      align-items: baseline;
+    }
+    .login{
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: baseline;
+    }
+    .box-label-input{
+      label{
+        font-size: 18px;
+        font-weight: 700;
+        color: rgb(12, 133, 101);
+        width: 150px;
       }
     }
-    .return-login-signup{
-      margin-top: 20px;
-      margin-bottom: 20px;
+  }
+
+  .return{
+    display: flex;
+    gap : 10px;
+    align-items: center;
+
+    p{
+      color: #53615c;
+      font-size: 15px;
+      font-weight: 600;
     }
+
+    button{
+      color: #537a6d;
+      background-color: #c7e4dd;
+      font-size: 17px;
+      font-weight:700;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover{
+      background-color: #bac0be;
+      color: #43514c;
+    }
+  }
+  .return-login-signup{
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 }
 
-@media(max-width:450px){
+@media(max-width:650px){
   .container-auth{
     flex-direction: column;
     .title-auth{
@@ -119,18 +122,18 @@
         color: #199a7c;
       }
     }
-    .form-auth{
-      padding-top: 10px;
-      padding-left: 30px;
-      width: 100%;
-      margin-bottom: 20px;
-      form{
-        .box-label-input{
-          flex-direction: column;
-        }
-        input, button {
-          width: 300px;
-        }
+  }
+  .form-auth{
+    padding-top: 20px;
+    padding-left: 30px;
+    width: 100%;
+    margin-bottom: 20px;
+    form{
+      .box-label-input{
+        flex-direction: column;
+      }
+      input, button {
+        width: 300px;
       }
     }
   }
