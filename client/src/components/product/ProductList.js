@@ -1,71 +1,47 @@
-import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
+import React, { useContext, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { AuthContext } from "../../context/auth.context";
+import { getUserDetail } from "../../redux/actions/UserAction";
+import Header from "../../common/header/Header";
+import IsFavourite from "./IsFavourite";
 
-const ProductList = () => {
-  const [products, setProducts] = useState([]);
-  const [favouriteProducts, setFavouriteProducts] = useState([]);
+const ProductList = ({ allProducts }) => {
   const { user } = useContext(AuthContext);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/product/allProducts`)
-      .then((response) => {
-        setProducts(response.data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
-
-  useEffect(() => {
-    const requets = {
-      favouriteProducts: favouriteProducts,
-    };
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/user/${user?._id}/edit`, requets)
-      .then((response) => {
-        console.log("response.data", response.data);
-      })
-      .catch((error) => console.log(error));
-  }, [favouriteProducts]);
-
-  // Add/remove from favorite list
-  const toggleFavorite = (productClicked) => {
-    if (favouriteProducts.includes(productClicked)) {
-      // Remove productClicked from favouriteProducts
-      // return favouriteProducts updated
-      const updatedFavoritesProducts = favouriteProducts?.filter(
-        (elm) => elm?._id !== productClicked?._id
-      );
-      setFavouriteProducts(updatedFavoritesProducts);
-    } else {
-      // Add to favorites
-      setFavouriteProducts([...favouriteProducts, productClicked]);
+    if (user) {
+      dispatch(getUserDetail(user?._id));
     }
-  };
+  }, [user?._id]);
 
-  console.log("favouriteProducts", favouriteProducts);
+  const userDetail = useSelector((state) => state.userReducer.userDetail);
 
   return (
-    <div className="product-list">
-      <h1> All Products</h1>
-      {products?.map((product) => (
-        <div key={product?.id} className="product-card">
-          <h2>{product?.name}</h2>
-          {user?._id && (
-            <button
-              className={`${
-                favouriteProducts?.includes(product)
-                  ? "remove-favourite"
-                  : "add-favourite"
-              }`}
-              onClick={() => {
-                toggleFavorite(product);
-              }}
-            ></button>
-          )}
-        </div>
-      ))}
-    </div>
+    <>
+      <Header />
+      <div className="product-list">
+        <h1> All Products</h1>
+        {allProducts?.map((product) => {
+          const isFavourite = userDetail?.favouriteProducts.some(
+            (elm) => elm._id === product?._id
+          );
+          return (
+            <div key={product?._id} className="product-card">
+              <h2>{product?.name}</h2>
+              {user?._id && (
+                <IsFavourite
+                  user={user}
+                  userDetail={userDetail}
+                  isFavourite={isFavourite}
+                  product={product}
+                />
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 };
 
