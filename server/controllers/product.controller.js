@@ -2,11 +2,11 @@ import ProductModel from "../models/Product.model.js";
 
 // Create the new product
 export const createNewProduct = (req, res, next) => {
-  // const { title, description } = req.body;
+  const { name, price, category, seller } = req.body;
 
   console.log("req.body", req.body);
 
-  ProductModel.create(req.body)
+  ProductModel.create({ name, price, category, seller })
     .then((response) => res.status(201).json(response))
     .catch((error) => {
       console.log("There was an error creating the new product", error);
@@ -21,7 +21,7 @@ export const getAllProducts = (req, res, next) => {
   ProductModel.find()
     .populate("seller")
     .then((productsArray) => {
-      res.json(productsArray);
+      res.status(200).json(productsArray);
     })
     .catch((error) => {
       console.log(

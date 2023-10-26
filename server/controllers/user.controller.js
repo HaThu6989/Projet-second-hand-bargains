@@ -16,14 +16,14 @@ export const signup = (req, res, next) => {
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   if (!emailRegex.test(email)) {
-    res.status(400).json({ message: "Provide a valid email address." });
+    res.status(400).json({ message: "Provide a valid email address" });
   }
 
   const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
   if (!passwordRegex.test(password)) {
     res.status(400).json({
       message:
-        "Password must have at least 6 characters and contain at least one number, one lowercase and one uppercase letter.",
+        "Password must have at least 6 characters and contain at least one number, one lowercase and one uppercase letter",
     });
     return;
   }
@@ -31,7 +31,7 @@ export const signup = (req, res, next) => {
   UserModel.findOne({ email })
     .then((foundUser) => {
       if (foundUser) {
-        res.status(400).json({ message: "User already exists." });
+        res.status(400).json({ message: "User already exists" });
       }
       const salt = bcrypt.genSaltSync(saltRounds);
       const hashedPassword = bcrypt.hashSync(password, salt);
@@ -45,7 +45,6 @@ export const signup = (req, res, next) => {
       });
     })
     .then((createdUser) => {
-      console.log("createdUser", createdUser);
       const { email, password, username, numberPhone, address } = createdUser;
       const user = { email, password, username, numberPhone, address };
       res.status(200).json({ user: user });
@@ -60,14 +59,14 @@ export const signup = (req, res, next) => {
 export const login = (req, res, next) => {
   const { email, password } = req.body;
 
+  console.log("req.body", req.body);
   if (email === "" || password === "") {
-    res.status(400).json({ message: "Provide email and password." });
+    res.status(400).json({ message: "Provide email and password" });
     return;
   }
 
   UserModel.findOne({ email })
     .then((foundUser) => {
-      console.log("foundUser", foundUser);
       if (!foundUser) {
         res.status(401).json({ message: "User not found" });
         return;
@@ -75,11 +74,9 @@ export const login = (req, res, next) => {
 
       const passwordCorrect = bcrypt.compareSync(password, foundUser.password);
 
-      console.log("passwordCorrect", passwordCorrect);
       if (passwordCorrect) {
         const { _id, email } = foundUser;
         const payload = { _id, email };
-        console.log("payload", payload);
 
         const authToken = jwt.sign(payload, process.env.TOKEN_SECRET, {
           algorithm: "HS256",
@@ -88,7 +85,7 @@ export const login = (req, res, next) => {
 
         res.status(200).json({ authToken });
       } else {
-        res.status(400).json({ message: "Unable to authenticate the user" });
+        res.status(400).json({ message: "Password is not correct" });
       }
     })
     .catch((error) =>
@@ -97,7 +94,6 @@ export const login = (req, res, next) => {
 };
 
 export const verify = (req, res, next) => {
-  // console.log("req", req);
   res.status(200).json(req.payloadAfterVerifyByExpressjwt);
 };
 
@@ -112,14 +108,29 @@ export const updateUser = (req, res, next) => {
     ownerProducts: req.body.ownerProducts,
   };
 
-  console.log("newInfo", newInfo);
-
   UserModel.findByIdAndUpdate(userId, newInfo, { new: true })
+    .populate("favouriteProducts")
+    .populate("ownerProducts")
     .then((updatedUser) => {
       res.status(200).json(updatedUser);
     })
     .catch((err) => {
-      console.log("error updating book in DB", err);
+      console.log("error updating user in DB", err);
+      next(err);
+    });
+};
+
+export const userDetail = (req, res, next) => {
+  const { userId } = req.params;
+
+  UserModel.findById(userId)
+    .populate("favouriteProducts")
+    .populate("ownerProducts")
+    .then((userDetail) => {
+      res.status(200).json(userDetail);
+    })
+    .catch((err) => {
+      console.log("error getting one user in DB", err);
       next(err);
     });
 };

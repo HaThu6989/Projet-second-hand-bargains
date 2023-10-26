@@ -14,7 +14,7 @@ const productSchema = new Schema(
     description: String,
     seller: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "UserModel",
+      ref: "User",
     },
     // usersLike: [
     //   {
@@ -23,7 +23,7 @@ const productSchema = new Schema(
     //   },
     // ],
     category: {
-      type: [String],
+      type: String,
       enum: [
         "electromenager",
         "ameublement",
@@ -32,6 +32,7 @@ const productSchema = new Schema(
         "livres",
         "autre",
       ],
+      default: "autre",
     },
   },
   {

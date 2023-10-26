@@ -14,7 +14,7 @@ const userSchema = new Schema({
     type: String,
     required: [true, "Password is required"],
   },
-  numberPhone: Number,
+  numberPhone: String,
   address: String,
   favouriteProducts: [
     {
