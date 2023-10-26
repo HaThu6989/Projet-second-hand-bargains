@@ -1,11 +1,14 @@
 import React, { useContext, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { AuthContext } from "../../../context/auth.context";
+import { getUserDetail } from "../../../redux/actions/UserAction";
+import { getAllProducts } from "../../../redux/actions/ProductAction";
 
 function NavLinkMenu() {
   const [mobileMenu, setMobileMenu] = useState(false);
   const { user, isLoggedIn, logOutUser } = useContext(AuthContext);
-
+  const dispatch = useDispatch();
   return (
     <div className="left-navlink">
       <ul
@@ -16,31 +19,44 @@ function NavLinkMenu() {
           <NavLink to="/">home</NavLink>
         </li> */}
         <li>
-          <NavLink to="/createNewProduct">Nouvelle annonce</NavLink>
+          <Link to={`/${user?._id}/createNewProduct`}>Nouvelle annonce</Link>
         </li>
         <li>
-          <NavLink to="/productList">Produits</NavLink>
+          <Link
+            to="/productList"
+            onClick={() => {
+              console.log("user", user);
+              dispatch(getAllProducts());
+              dispatch(getUserDetail(user?._id));
+            }}
+          >
+            Produits
+          </Link>
         </li>
         {isLoggedIn && (
           <>
             <li>
-              <a onClick={logOutUser}>Logout</a>
+              <Link to="/" onClick={logOutUser}>
+                Logout
+              </Link>
             </li>
             <li>
-              <NavLink to="/user">
-                {/* <i className="fa fa-user icon-circle"></i> */}
-                Hi, {user?.email} !!!
-              </NavLink>
+              <Link
+                to={`/${user?._id}/page`}
+                onClick={() => dispatch(getUserDetail(user?._id))}
+              >
+                Votre compte
+              </Link>
             </li>
           </>
         )}
         {!isLoggedIn && (
           <>
             <li>
-              <NavLink to="/login">Login</NavLink>
+              <Link to="/login">Login</Link>
             </li>
             <li>
-              <NavLink to="/signup">Signup</NavLink>
+              <Link to="/signup">Signup</Link>
             </li>
           </>
         )}

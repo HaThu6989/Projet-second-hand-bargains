@@ -19,7 +19,7 @@ function Header() {
           </div>
 
           <div className="categories-box">
-            <span class="fa-solid fa-border-all"></span>
+            <span className="fa-solid fa-border-all"></span>
             <h4>Categories</h4>
             <button onClick={() => setOpenCategoriesList(!openCategoriesList)}>
               <i className="fa fa-chevron-down"></i>

@@ -4,14 +4,24 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { AuthProviderWrapper } from "./context/auth.context.js";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import { BrowserRouter } from "react-router-dom";
+import { getAllProducts } from "./redux/actions/ProductAction";
+
+store.dispatch(getAllProducts());
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <AuthProviderWrapper>
-      <App />
-    </AuthProviderWrapper>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <Provider store={store}>
+    <BrowserRouter>
+      <AuthProviderWrapper>
+        <App />
+      </AuthProviderWrapper>
+    </BrowserRouter>
+  </Provider>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
