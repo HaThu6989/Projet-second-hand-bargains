@@ -1,7 +1,8 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import UserModel from "../models/User.model.js";
 import dotenv from "dotenv";
+import UserModel from "../../src/models/User.model.js";
+import ProductModel from "../../src/models/Product.model.js";
 dotenv.config();
 
 const saltRounds = 10;
@@ -59,7 +60,6 @@ export const signup = (req, res, next) => {
 export const login = (req, res, next) => {
   const { email, password } = req.body;
 
-  console.log("req.body", req.body);
   if (email === "" || password === "") {
     res.status(400).json({ message: "Provide email and password" });
     return;
@@ -108,7 +108,9 @@ export const updateUser = (req, res, next) => {
     ownerProducts: req.body.ownerProducts,
   };
 
-  UserModel.findByIdAndUpdate(userId, newInfo, { new: true })
+  UserModel.findByIdAndUpdate(userId, newInfo, {
+    new: true,
+  })
     .populate("favouriteProducts")
     .populate("ownerProducts")
     .then((updatedUser) => {
@@ -133,4 +135,26 @@ export const userDetail = (req, res, next) => {
       console.log("error getting one user in DB", err);
       next(err);
     });
+};
+
+export const deleteUser = async (req, res, next) => {
+  try {
+    const { userId } = req.params;
+
+    const userToDelete = await UserModel.findById(userId);
+
+    await ProductModel.deleteMany({
+      _id: { $in: userToDelete.ownerProducts },
+    });
+
+    await UserModel.findByIdAndDelete(userId);
+
+    res.status(200).json(userId);
+  } catch (error) {
+    console.log("There was an error of deleting the user", error);
+    res.status(500).json({
+      message: "error of deleting the user",
+      error: error,
+    });
+  }
 };

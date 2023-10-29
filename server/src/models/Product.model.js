@@ -41,4 +41,5 @@ const productSchema = new Schema(
 );
 
 const ProductModel = model("Product", productSchema);
+
 export default ProductModel;

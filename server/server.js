@@ -2,8 +2,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import UserRoute from "./routes/user.routes.js";
-import ProductRoute from "./routes/product.routes.js";
+import UserRoute from "./src/routes/user.routes.js";
+import ProductRoute from "./src/routes/product.routes.js";
 
 dotenv.config();
 const { FRONTEND_URL, MONGODB_URL, PORT } = process.env;
@@ -18,6 +18,7 @@ app.use(
 );
 
 app.use(express.json());
+app.use("/public", express.static("public"));
 
 mongoose
   .connect(MONGODB_URL)
