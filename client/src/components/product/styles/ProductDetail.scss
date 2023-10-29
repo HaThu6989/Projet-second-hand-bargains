@@ -1,0 +1,37 @@
+.container-product-detail{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  gap: 40px;
+  h2{
+    font-size: 1.8em;
+    color: rgb(98, 178, 151);
+    span{
+      font-size: 25px;
+      color: grey;
+    }
+  }
+
+  .seller{
+    display: flex;
+    align-items: center;
+    gap : 10px;
+    .seller-slogan{
+      background-color: rgb(136, 198, 158);
+      display: flex;
+      vertical-align: middle;
+      padding: 20px 26px;
+      font-size: 20px;
+      font-weight: 800;
+      border-radius: 50%;
+      color: white;
+    }
+    .seller-username{
+      font-size: 19px;
+      font-weight: 500;
+    }
+  }
+
+}
+

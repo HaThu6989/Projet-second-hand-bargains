@@ -1,15 +1,22 @@
 import axios from "axios";
 
-const API = axios.create({
+const storedToken = localStorage.getItem("authToken");
+
+const APIPublic = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+});
+
+const APIPrivate = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
   headers: {
-    "Content-Type": "application/json",
+    Authorization: `Bearer ${storedToken}`,
   },
 });
 
-export const getAllProducts = () => API.get("/product/allProducts");
+export const getAllProducts = () => APIPublic.get("/product/allProducts");
+export const getOneProduct = (id) => APIPublic.get(`/product/${id}`);
+
 export const createNewProduct = (request) =>
-  API.post("/product/createNewProduct", request);
-// export const updateProduct = () => API.get("/product/allProducts");
-// export const deleteProduct = () => API.get("/product/allProducts");
-// export const getProductDetail = () => API.get("/product/allProducts");
+  APIPrivate.post("/product/createNewProduct", request);
+export const updateProduct = (id) => APIPrivate.put(`/product/${id}`);
+export const deleteProduct = (id) => APIPrivate.delete(`/product/${id}`);

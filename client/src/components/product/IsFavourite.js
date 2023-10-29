@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { getUserDetail, updateUser } from "../../redux/actions/UserAction";
 
 function IsFavourite(props) {
-  const { user, userDetail, isFavourite, product } = props;
+  const { user, userDetail, isFavourite, productSelected } = props;
   const dispatch = useDispatch();
 
   // Add/remove from favorite list
@@ -35,7 +35,7 @@ function IsFavourite(props) {
     <button
       className={`${isFavourite ? "remove-favourite" : "add-favourite"}`}
       onClick={() => {
-        toggleFavorite(product);
+        toggleFavorite(productSelected);
       }}
     ></button>
   );

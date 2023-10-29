@@ -25,8 +25,7 @@
   margin: 50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
 
   h1{
     margin-bottom: 20px;
@@ -35,5 +34,17 @@
   .product-card{
     display: flex;
     align-items: center;
+    gap: 20px;
+
+    .title {
+      width: 200px;
+      a {
+        color: rgb(98, 178, 151);;
+      }
+      a:hover{
+        color: #7b7b7b;
+      }
+    }
+
   }
 }
