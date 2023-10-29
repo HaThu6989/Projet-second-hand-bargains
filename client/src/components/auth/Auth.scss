@@ -66,6 +66,38 @@
       gap: 18px;
       align-items: baseline;
     }
+    .input-password{
+      position: relative;
+      width: fit-content;
+      .pass-control-view{
+        position: absolute;
+
+        right: 11px;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        transition: 0.5s;
+        cursor: pointer;
+      }
+      .show-pass{
+        background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;
+      }
+      .hide-pass{
+        background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat;
+      }
+    }
+
+    .signup{
+      .pass-control-view{
+        top: 0px;
+      }
+    }
+    .login{
+      .pass-control-view{
+        top: 40px;
+      }
+    }
+
     .box-label-input{
       label{
         font-size: 18px;
@@ -73,6 +105,7 @@
         color: rgb(12, 133, 101);
         width: 150px;
       }
+    
     }
   }
 
@@ -131,6 +164,10 @@
     form{
       .box-label-input{
         flex-direction: column;
+
+        .pass-control-view{
+          top: 27px;
+        }
       }
       input, button {
         width: 300px;
