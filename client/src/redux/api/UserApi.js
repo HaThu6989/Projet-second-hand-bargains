@@ -1,9 +1,18 @@
 import axios from "axios";
 
-const API = axios.create({
+const storedToken = localStorage.getItem("authToken");
+
+const APIPublic = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
 
-export const getUserDetail = (userId) => API.get(`/user/${userId}`);
+const APIPrivate = axios.create({
+  baseURL: process.env.REACT_APP_API_URL,
+  headers: {
+    Authorization: `Bearer ${storedToken}`,
+  },
+});
+
+export const getUserDetail = (userId) => APIPrivate.get(`/user/${userId}`);
 export const updateUser = (userId, request) =>
-  API.put(`/user/${userId}/update`, request);
+  APIPrivate.put(`/user/${userId}/update`, request);

@@ -2,7 +2,7 @@ import * as UserApi from "../api/UserApi";
 
 export const GET_USER = "GET_USER";
 export const UPDATE_USER = "UPDATE_USER";
-// export const GET_ALL_PRODUCTS = "GET_ALL_PRODUCTS";
+export const GET_AUTHTOKEN = "GET_AUTHTOKEN";
 
 export const getUserDetail = (userId) => async (dispatch) => {
   const userDetail = await UserApi.getUserDetail(userId);
