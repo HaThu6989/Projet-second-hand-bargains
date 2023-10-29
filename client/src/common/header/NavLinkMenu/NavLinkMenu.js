@@ -15,19 +15,18 @@ function NavLinkMenu() {
         className={mobileMenu ? "nav-links-mobile" : "link f_flex capitalize"}
         onClick={() => setMobileMenu(false)}
       >
-        {/* <li>
-          <NavLink to="/">home</NavLink>
-        </li> */}
-        <li>
-          <Link to={`/${user?._id}/createNewProduct`}>Nouvelle annonce</Link>
-        </li>
+        {isLoggedIn && (
+          <li>
+            <Link to={`/${user?._id}/createNewProduct`}>Nouvelle annonce</Link>
+          </li>
+        )}
+
         <li>
           <Link
             to="/productList"
             onClick={() => {
-              console.log("user", user);
               dispatch(getAllProducts());
-              dispatch(getUserDetail(user?._id));
+              user && dispatch(getUserDetail(user?._id));
             }}
           >
             Produits

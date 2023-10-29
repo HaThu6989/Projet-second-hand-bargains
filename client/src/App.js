@@ -9,6 +9,7 @@ import ProductList from "./components/product/ProductList";
 import UserPage from "./components/user/UserProfile/UserPage";
 import UpdateUser from "./components/user/CRUD/UpdateUser";
 import { useSelector } from "react-redux";
+import ProductDetail from "./components/product/ProductDetail";
 
 function App() {
   const allProducts = useSelector((state) => state.productReducer.allProducts);
@@ -16,21 +17,25 @@ function App() {
   console.log("allProducts", allProducts);
   return (
     <>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route
-          path="/productList"
-          element={<ProductList allProducts={allProducts} />}
-        />
-        <Route path="/:userId/page" element={<UserPage />} />
-        <Route
-          path="/:userId/createNewProduct"
-          element={<CreateNewProduct />}
-        />
-        <Route path="/:userId/update" element={<UpdateUser />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/productList"
+            element={<ProductList allProducts={allProducts} />}
+          />
+          <Route path="/productList/:productId" element={<ProductDetail />} />
+          <Route path="/:userId/page" element={<UserPage />} />
+          <Route
+            path="/:userId/createNewProduct"
+            element={<CreateNewProduct />}
+          />
+          <Route path="/:userId/update" element={<UpdateUser />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
     </>
   );
 }

@@ -7,15 +7,12 @@ import Header from "../../common/header/Header";
 
 function HomePage() {
   return (
-    <>
-      <Header />
-      <div className="container-homepage">
-        <Slogan />
-        <Slider />
-        <Carts />
-        <Footer />
-      </div>
-    </>
+    <div className="container-homepage">
+      <Slogan />
+      <Slider />
+      <Carts />
+      <Footer />
+    </div>
   );
 }
 

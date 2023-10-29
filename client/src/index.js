@@ -6,7 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import { AuthProviderWrapper } from "./context/auth.context.js";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import { BrowserRouter } from "react-router-dom";
 import { getAllProducts } from "./redux/actions/ProductAction";
 
 store.dispatch(getAllProducts());
@@ -14,13 +13,11 @@ store.dispatch(getAllProducts());
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
-  <Provider store={store}>
-    <BrowserRouter>
-      <AuthProviderWrapper>
-        <App />
-      </AuthProviderWrapper>
-    </BrowserRouter>
-  </Provider>
+  <AuthProviderWrapper>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </AuthProviderWrapper>
   // </React.StrictMode>
 );
 

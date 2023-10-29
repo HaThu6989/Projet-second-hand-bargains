@@ -2,6 +2,7 @@
 @import "../styles//UserProductsList.scss";
 
 .container-user-page{
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 20px;
