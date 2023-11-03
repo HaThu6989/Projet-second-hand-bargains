@@ -2,10 +2,13 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AuthContext } from "../../../context/auth.context";
-import { getUserDetail } from "../../../redux/actions/UserAction";
+import {
+  checkOwnerPage,
+  getUserDetail,
+} from "../../../redux/actions/UserAction";
 import { getAllProducts } from "../../../redux/actions/ProductAction";
 
-function NavLinkMenu() {
+function NavLinkMenu({ allProducts }) {
   const [mobileMenu, setMobileMenu] = useState(false);
   const { user, isLoggedIn, logOutUser } = useContext(AuthContext);
   const dispatch = useDispatch();
@@ -25,11 +28,10 @@ function NavLinkMenu() {
           <Link
             to="/productList"
             onClick={() => {
-              dispatch(getAllProducts());
-              user && dispatch(getUserDetail(user?._id));
+              return dispatch(getAllProducts());
             }}
           >
-            Produits
+            Annonces
           </Link>
         </li>
         {isLoggedIn && (
@@ -42,7 +44,10 @@ function NavLinkMenu() {
             <li>
               <Link
                 to={`/${user?._id}/page`}
-                onClick={() => dispatch(getUserDetail(user?._id))}
+                onClick={() => {
+                  dispatch(getUserDetail(user?._id));
+                  dispatch(checkOwnerPage(user?._id));
+                }}
               >
                 Votre compte
               </Link>

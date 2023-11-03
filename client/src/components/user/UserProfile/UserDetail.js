@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function UserDetail({ userDetail }) {
+function UserDetail({ userDetail, isOwnerPage }) {
   return (
     <div className="user-detail">
-      <h2 className="user-title-profile-CRUD">
-        Bonjour <span>{userDetail?.username}</span> !
-      </h2>
+      <div className="seller-slogan-username">
+        <div className="seller-slogan">{userDetail?.username.split("")[0]}</div>
+        <h2 className="seller-username">{userDetail?.username}</h2>
+      </div>
+
       <table className="user-detail-table">
         <tr>
           <th>Nom</th>
@@ -25,7 +27,9 @@ function UserDetail({ userDetail }) {
           <td>{userDetail?.address}</td>
         </tr>
       </table>
-      <Link to={`/${userDetail?._id}/update`}>Mise à jour</Link>
+      {isOwnerPage && (
+        <Link to={`/${userDetail?._id}/update`}>Mise à jour</Link>
+      )}
     </div>
   );
 }

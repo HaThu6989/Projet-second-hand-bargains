@@ -1,23 +1,22 @@
 @import "../styles/UserDetail.scss";
 @import "../styles//UserProductsList.scss";
 
-.container-user-page{
-  position: relative;
+.container-user-page {
   display: flex;
   flex-direction: column;
   padding: 20px;
   gap: 40px;
 }
-.user-title-profile-CRUD{
+.user-title-profile-CRUD {
   font-size: 2em;
   color: rgb(98, 178, 151);
-  span{
+  span {
     color: #7b7b7b;
   }
 }
 
 @media (max-width: 400px) {
-  .user-title-profile-CRUD{
+  .user-title-profile-CRUD {
     font-size: 1.5em;
   }
 }

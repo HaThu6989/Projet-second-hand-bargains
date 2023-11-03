@@ -1,4 +1,4 @@
-.container-title{
+.container-title {
   display: flex;
   justify-content: space-between;
   width: 700px;
@@ -11,12 +11,16 @@
     color: rgb(98, 178, 151);
     margin: auto 0;
   }
-  a:hover{
-    color:black;
+  a:hover {
+    color: black;
   }
 }
 
-.user-list-products-table{
+.user-list-products {
+  position: relative;
+}
+
+.user-list-products-table {
   border-collapse: collapse;
   border-radius: 5px;
   overflow: hidden;
@@ -24,15 +28,16 @@
   width: 700px;
   text-align: center;
 
-  .delete{
+  .delete {
     .button-delete {
       width: 100%;
     }
   }
-  
+
   tr {
     border-bottom: 1px solid #dddddd;
     word-wrap: break-word;
+
     th {
       background: rgb(210, 235, 227);
       color: #817373;
@@ -42,30 +47,40 @@
     td {
       padding: 5px 0;
     }
-    .index{
+    .index {
       width: 10%;
     }
-    .name{
+    .name {
       width: 50%;
     }
-    .price{
+    .price {
       width: 25%;
     }
-    .delete{
+    .delete {
       width: 15%;
     }
   }
 
   tr:hover {
-    background: #dddddd;
+    background: #efeeee;
+  }
+
+  tbody {
+    tr {
+      .name {
+        a:hover {
+          color: rgb(102, 215, 146);
+        }
+      }
+    }
   }
 }
 
-@media(max-width:730px){
-  .user-list-products-table{
+@media (max-width: 730px) {
+  .user-list-products-table {
     width: 350px;
   }
-  .container-title{
+  .container-title {
     width: 350px;
   }
-} 
+}

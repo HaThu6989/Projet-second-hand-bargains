@@ -1,0 +1,98 @@
+.product-cart {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 200px;
+  gap: 8px;
+  //   box-shadow: rgb(43 52 69 / 10%) 0px 4px 16px;
+
+  .text-ellipsis {
+    white-space: nowrap; /* Ngăn văn bản xuống dòng */
+    overflow: hidden; /* Ẩn nội dung vượt ra ngoài phần tử cha */
+    text-overflow: ellipsis; /* Thêm "..." khi văn bản quá dài */
+    width: 200px; /* Điều chỉnh chiều rộng tối đa của phần tử */
+  }
+  .seller-slogan-username-productList {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+
+    .seller-slogan {
+      background-color: rgb(136, 198, 158);
+      display: flex;
+      vertical-align: middle;
+      padding: 5px 10px;
+      font-size: 15px;
+      font-weight: 800;
+      border-radius: 50%;
+      color: white;
+      a:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    a {
+      color: rgb(98, 178, 151);
+    }
+    a:hover {
+      color: #7b7b7b;
+    }
+  }
+  .img-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(202, 209, 217);
+    border-radius: 0.8rem;
+    width: 200px;
+    height: 250px;
+  }
+  .have-img {
+    position: relative;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      border-radius: 0.8rem;
+    }
+  }
+
+  .no-img {
+    img {
+      max-height: 40%;
+      max-width: 40%;
+    }
+  }
+
+  .date {
+    color: #aaaaaa;
+    font-style: italic;
+    padding-bottom: 25px;
+  }
+}
+
+.favourite {
+  position: absolute;
+  bottom: 25px;
+  right: 5px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  height: 30px;
+  width: 30px;
+}
+.remove-favourite {
+  background-image: url("../../../assets/heart-red.svg");
+}
+
+.add-favourite {
+  background-image: url("../../../assets/heart.svg");
+}

@@ -1,37 +1,119 @@
-.container-product-detail{
-  position: relative;
+.product-detail-container {
   display: flex;
   flex-direction: column;
   padding: 40px;
   gap: 40px;
-  h2{
-    font-size: 1.8em;
-    color: rgb(98, 178, 151);
-    span{
-      font-size: 25px;
-      color: grey;
-    }
-  }
-
-  .seller{
-    display: flex;
-    align-items: center;
-    gap : 10px;
-    .seller-slogan{
-      background-color: rgb(136, 198, 158);
-      display: flex;
-      vertical-align: middle;
-      padding: 20px 26px;
-      font-size: 20px;
-      font-weight: 800;
-      border-radius: 50%;
-      color: white;
-    }
-    .seller-username{
-      font-size: 19px;
-      font-weight: 500;
-    }
-  }
-
 }
 
+.info-product-user-container {
+  display: grid;
+  grid-template-columns: 68% 30%;
+  justify-content: space-between;
+}
+
+.info-product-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(96, 92, 92, 0.25);
+
+  h2 {
+    font-size: 1.6em;
+    color: rgb(98, 178, 151);
+  }
+  .price {
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .date {
+    font-size: 15px;
+    color: grey;
+    font-style: italic;
+  }
+}
+
+.info-seller-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(96, 92, 92, 0.25);
+}
+
+.seller-slogan-username {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .seller-slogan {
+    background-color: rgb(136, 198, 158);
+    display: flex;
+    vertical-align: middle;
+    padding: 12px 20px;
+    font-size: 25px;
+    font-weight: 800;
+    border-radius: 50%;
+    color: white;
+  }
+  .seller-username {
+    font-size: 25px;
+    font-weight: 500;
+    color: rgb(108, 149, 123);
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.contact-seller {
+  display: flex;
+  justify-content: center;
+  button {
+    padding: 6px 10px;
+    background-color: #e94560;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #d27a89;
+  }
+}
+
+.description-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  .description-title {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  img {
+    width: 60%;
+    height: 60%;
+  }
+}
+
+@media (max-width: 800px) {
+  .product-detail-container {
+    padding: 15px;
+  }
+  .info-product-user-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+@media (max-width: 450px) {
+  .description-container {
+    img {
+      height: 350px;
+      width: 350px;
+      object-fit: contain;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-.modal-confirm-delete{
+.modal-confirm-delete {
   width: 500px;
   height: 150px;
   background-color: white;
@@ -7,7 +7,7 @@
   border: 1px solid #cec6c6;
   border-radius: 5px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
-  top: 25vh;
+  top: 0;
   left: 112px;
   display: flex;
   flex-direction: column;
@@ -19,15 +19,15 @@
     font-size: 20px;
   }
 
-  .response-confirm-delete{
+  .response-confirm-delete {
     display: flex;
-    justify-content:flex-end;
-    gap : 30px;
+    justify-content: flex-end;
+    gap: 30px;
     padding-right: 20px;
     padding-top: 15px;
-    border-top: 1px solid #cec6c6;;
+    border-top: 1px solid #cec6c6;
 
-    button{
+    button {
       background-color: rgb(210, 235, 227);
       color: #061a15;
       font-size: 17px;
@@ -35,19 +35,19 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    button:hover{
+    button:hover {
       background-color: rgb(98, 178, 151);
     }
   }
 }
 
-@media (max-width: 620px) {
-  .modal-confirm-delete{
+@media (max-width: 730px) {
+  .modal-confirm-delete {
     width: 350px;
-    top: 40vh;
-    left: 20px;
+    top: 0;
+    left: 0;
     background-color: rgb(240, 243, 196);
-    button{
+    button {
       background-color: rgb(219 239 233);
     }
   }

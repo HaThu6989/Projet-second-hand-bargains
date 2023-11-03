@@ -6,17 +6,14 @@ import {
   getAllProducts,
 } from "../../../redux/actions/ProductAction";
 import ModalConfirmDelete from "./ModalConfirmDelete";
-import { getUserDetail } from "../../../redux/actions/UserAction";
 
 function DeleteProduct(props) {
-  const { userDetail, productSelected } = props;
+  const { productSelected } = props;
   const [openModalDelete, setOpenModalDelete] = useState(false);
   const dispatch = useDispatch();
 
   const handleDelete = () => {
     dispatch(deleteProduct(productSelected?._id));
-    dispatch(getUserDetail(userDetail?._id));
-    dispatch(getAllProducts());
     setOpenModalDelete(false);
   };
 

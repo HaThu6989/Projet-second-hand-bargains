@@ -5,7 +5,7 @@ import Search from "./Search/Search";
 import NavLinkMenu from "./NavLinkMenu/NavLinkMenu";
 import { Link } from "react-router-dom";
 
-function Header() {
+function Header({ allProducts }) {
   const [openCategoriesList, setOpenCategoriesList] = useState(false);
 
   return (
@@ -28,8 +28,8 @@ function Header() {
 
           <Search />
         </div>
-        <NavLinkMenu />
-        {openCategoriesList && <Categories />}
+        <NavLinkMenu allProducts={allProducts} />
+        {openCategoriesList && <Categories allProducts={allProducts} />}
       </header>
     </>
   );

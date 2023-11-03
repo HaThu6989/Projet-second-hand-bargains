@@ -1,50 +1,40 @@
-.remove-favourite {
-  background-image: url("../../../assets/heart-full.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 50%;
-  background-color: transparent;
-  height: 50px;
-  width: 50px;
-  border: none;
-}
- 
-.add-favourite {
-  background-image: url("../../../assets/heart-empty.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 50%;
-  background-color: transparent;
-  height: 50px;
-  width: 50px;
-  border: none;
-}
-
-
-.product-list{
+.product-list-page-container {
   margin: 50px;
   display: flex;
   flex-direction: column;
 
-
-  h1{
+  h2 {
     margin-bottom: 20px;
+    color: #767666;
   }
+}
 
-  .product-card{
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.product-carts-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 15px;
+}
 
-    .title {
-      width: 200px;
-      a {
-        color: rgb(98, 178, 151);;
-      }
-      a:hover{
-        color: #7b7b7b;
-      }
-    }
+@media (max-width: 1040px) {
+  .product-carts-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 
+@media (max-width: 870px) {
+  .product-carts-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .product-carts-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .product-carts-container {
+    grid-template-columns: repeat(1, 1fr);
   }
 }

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import deleteicon from "../../../assets/delete-icon.jpg";
 import ModalConfirmDelete from "../../product/CRUD/ModalConfirmDelete";
 import { getUserDetail, updateUser } from "../../../redux/actions/UserAction";
+import { Link } from "react-router-dom";
 
 function UserProductsFavourite({ userDetail }) {
   const [openModalDeleteFavourite, setOpenModalDeleteFavourite] =
@@ -31,7 +32,7 @@ function UserProductsFavourite({ userDetail }) {
 
   return (
     <>
-      <div className="user-list-products favourite">
+      <div className="user-list-products">
         <div className="container-title">
           <h3>Annonces favorites</h3>
         </div>
@@ -49,32 +50,42 @@ function UserProductsFavourite({ userDetail }) {
               return (
                 <tr>
                   <td className="index"> {index + 1} </td>
-                  <td className="name">{elm.name}</td>
+                  <td className="name">
+                    <Link
+                      to={`/productList/${elm._id}`}
+                      className="text-ellipsis"
+                    >
+                      {elm.name}
+                    </Link>
+                  </td>
                   <td className="price">{elm.price}€</td>
                   <td className="delete">
-                    <button
-                      type="button"
-                      className="button-delete"
-                      onClick={() => handleShowDelete(elm)}
-                      data-toggle="tooltip"
-                      data-placement="top"
-                      title="Supprimer"
-                    >
-                      <img src={deleteicon} />
-                    </button>
+                    <div>
+                      <button
+                        type="button"
+                        className="button-delete"
+                        onClick={() => handleShowDelete(elm)}
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="Supprimer"
+                      >
+                        <img src={deleteicon} />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               );
             })}
           </tbody>
         </table>
+
+        {openModalDeleteFavourite && (
+          <ModalConfirmDelete
+            setOpenModalDelete={setOpenModalDeleteFavourite}
+            handleDelete={handleDeleteProductFavourite}
+          />
+        )}
       </div>
-      {openModalDeleteFavourite && (
-        <ModalConfirmDelete
-          setOpenModalDelete={setOpenModalDeleteFavourite}
-          handleDelete={handleDeleteProductFavourite}
-        />
-      )}
     </>
   );
 }

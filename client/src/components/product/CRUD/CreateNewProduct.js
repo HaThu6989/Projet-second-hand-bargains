@@ -4,7 +4,7 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import * as ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useDispatch } from "react-redux";
 import { createNewProduct } from "../../../redux/actions/ProductAction";
-import { getUserDetail } from "../../../redux/actions/UserAction";
+import { checkOwnerPage } from "../../../redux/actions/UserAction";
 
 function CreateNewProduct() {
   const { userId } = useParams();
@@ -26,8 +26,9 @@ function CreateNewProduct() {
       description,
     };
     dispatch(createNewProduct(requestBody));
-    dispatch(getUserDetail(userId));
+    dispatch(checkOwnerPage(userId));
     navigate(`/${userId}/page`);
+    // navigate(`/productList`);
   };
 
   return (
@@ -78,24 +79,19 @@ function CreateNewProduct() {
         <div className="description">
           <label>Description</label>
           <CKEditor
+            editor={ClassicEditor}
             config={{
               ckfinder: {
                 uploadUrl: `${process.env.REACT_APP_API_URL}/product/upload-image-product`,
                 withCredentials: true,
                 headers: {
                   "Content-Type": "image/jpeg",
-                  Authorization: "your token",
                 },
               },
             }}
-            editor={ClassicEditor}
             data={description}
-            onReady={(editor) => {
-              console.log("Editor is ready to use!", editor);
-            }}
             onChange={(event, editor) => {
               const data = editor.getData();
-              // console.log({ event, editor, data });
               return setDescription(data);
             }}
           />

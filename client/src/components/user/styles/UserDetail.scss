@@ -1,4 +1,4 @@
-.user-detail{
+.user-detail {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -11,13 +11,13 @@
     border-radius: 5px;
     padding: 2px 8px;
   }
-  a:hover{
+  a:hover {
     background-color: #bac0be;
     color: #43514c;
   }
 }
 
-.user-detail-table{
+.user-detail-table {
   border-collapse: collapse;
   font-size: 1rem;
   border-radius: 5px;
@@ -31,7 +31,7 @@
     border-bottom: 1px solid #dddddd;
     transition: all 0.1s ease-in;
     background-color: #f0eeee;
-    
+
     th {
       background: rgb(98, 178, 151);
       color: #fff;
@@ -48,7 +48,6 @@
       padding: 10px;
       height: auto;
     }
-
   }
 
   tr:hover {
@@ -56,18 +55,18 @@
   }
 }
 
-@media(max-width:730px){
-  .user-detail-table{
+@media (max-width: 730px) {
+  .user-detail-table {
     width: 350px;
     tr {
-    display: flex;
-    flex-direction: column;
-      th{
-        width: 350px;
+      display: flex;
+      flex-direction: column;
+      th {
+        display: none;
       }
-      td{
+      td {
         min-height: 50px;
       }
-   }
+    }
   }
 }

@@ -13,9 +13,8 @@ const APIPrivate = axios.create({
   },
 });
 
-export const getAllProducts = () => APIPublic.get("/product/allProducts");
+export const getAllProducts = () => APIPrivate.get("/product/allProducts");
 export const getOneProduct = (id) => APIPublic.get(`/product/${id}`);
-
 export const createNewProduct = (request) =>
   APIPrivate.post("/product/createNewProduct", request);
 export const updateProduct = (id) => APIPrivate.put(`/product/${id}`);

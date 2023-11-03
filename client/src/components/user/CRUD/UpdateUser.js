@@ -30,10 +30,12 @@ function UpdateUser() {
     e.preventDefault();
 
     const request = {
-      username: username,
-      address: address,
-      numberPhone: numberPhone,
+      username,
+      address,
+      numberPhone,
     };
+
+    console.log("request", request);
     dispatch(updateUser(userId, request));
     dispatch(getUserDetail(userId));
     navigate(`/${userId}/page`);

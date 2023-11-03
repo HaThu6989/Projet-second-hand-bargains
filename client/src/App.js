@@ -1,31 +1,30 @@
 import "./App.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Header from "./common/header/Header";
 import HomePage from "./components/homepage/HomePage";
 import Signup from "./components/auth/Signup/Signup";
 import Login from "./components/auth/Login/Login";
 import CreateNewProduct from "./components/product/CRUD/CreateNewProduct";
-import ProductList from "./components/product/ProductList";
+import ProductListPage from "./components/product/ProductList/ProductListPage";
 import UserPage from "./components/user/UserProfile/UserPage";
 import UpdateUser from "./components/user/CRUD/UpdateUser";
-import { useSelector } from "react-redux";
-import ProductDetail from "./components/product/ProductDetail";
+import ProductPage from "./components/product/ProductDetail/ProductPage";
 
 function App() {
   const allProducts = useSelector((state) => state.productReducer.allProducts);
 
-  console.log("allProducts", allProducts);
   return (
     <>
       <Router>
-        <Header />
+        <Header allProducts={allProducts} />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/productList/:productId" element={<ProductPage />} />
           <Route
             path="/productList"
-            element={<ProductList allProducts={allProducts} />}
+            element={<ProductListPage allProducts={allProducts} />}
           />
-          <Route path="/productList/:productId" element={<ProductDetail />} />
           <Route path="/:userId/page" element={<UserPage />} />
           <Route
             path="/:userId/createNewProduct"
