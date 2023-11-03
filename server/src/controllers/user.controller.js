@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import UserModel from "../../src/models/User.model.js";
 import ProductModel from "../../src/models/Product.model.js";
+import mongoose from "mongoose";
 dotenv.config();
 
 const saltRounds = 10;
@@ -65,6 +66,8 @@ export const login = (req, res, next) => {
     return;
   }
 
+  console.log("req.body", req.body);
+
   UserModel.findOne({ email })
     .then((foundUser) => {
       if (!foundUser) {
@@ -83,6 +86,8 @@ export const login = (req, res, next) => {
           expiresIn: "6h",
         });
 
+        console.log("authToken", authToken);
+
         res.status(200).json({ authToken });
       } else {
         res.status(400).json({ message: "Password is not correct" });
@@ -93,10 +98,34 @@ export const login = (req, res, next) => {
     );
 };
 
+/* Verify auth */
 export const verify = (req, res, next) => {
   res.status(200).json(req.payloadAfterVerifyByExpressjwt);
 };
 
+/* Check is owner of page */
+export const checkOwnerPage = (req, res, next) => {
+  const { userId } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(userId)) {
+    res.status(400).json({ message: "Specified id is not valid" });
+    return;
+  }
+
+  UserModel.findById(userId)
+    .then((userFromDB) => {
+      const inputString = req.payloadAfterVerifyByExpressjwt._id;
+      const objectId = new mongoose.Types.ObjectId(inputString);
+
+      if (userFromDB._id.equals(objectId)) {
+        res.json({ isOwnerPage: true, message: "You are the owner" });
+      } else {
+        res.json({ isOwnerPage: false, message: "You aren't the owner" });
+      }
+    })
+    .catch((error) => console.log("Error find user by id", error));
+};
+
+/* Update user */
 export const updateUser = (req, res, next) => {
   const { userId } = req.params;
 
@@ -107,6 +136,11 @@ export const updateUser = (req, res, next) => {
     favouriteProducts: req.body.favouriteProducts,
     ownerProducts: req.body.ownerProducts,
   };
+
+  if (!mongoose.Types.ObjectId.isValid(userId)) {
+    res.status(400).json({ message: "Specified id is not valid" });
+    return;
+  }
 
   UserModel.findByIdAndUpdate(userId, newInfo, {
     new: true,
@@ -122,8 +156,14 @@ export const updateUser = (req, res, next) => {
     });
 };
 
+/* Get user detail */
 export const userDetail = (req, res, next) => {
   const { userId } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(userId)) {
+    res.status(400).json({ message: "Specified id is not valid" });
+    return;
+  }
 
   UserModel.findById(userId)
     .populate("favouriteProducts")
@@ -137,9 +177,15 @@ export const userDetail = (req, res, next) => {
     });
 };
 
+/* Delete user */
 export const deleteUser = async (req, res, next) => {
   try {
     const { userId } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      res.status(400).json({ message: "Specified id is not valid" });
+      return;
+    }
 
     const userToDelete = await UserModel.findById(userId);
 

@@ -1,17 +1,15 @@
+import mongoose from "mongoose";
 import ProductModel from "../../src/models/Product.model.js";
 import UserModel from "../../src/models/User.model.js";
-import fs from "fs";
 
 // Upload image
-export const uploadImage = (res, req, next) => {
-  const TempFile = req.files.upload;
+export const uploadImage = (req, res, next) => {
+  let tempFile = req.files.upload;
+  let path = tempFile.path;
 
-  fs.readFile(TempFile.path, "utf8", (err) => {
-    res.status(200).json({
-      upload: true,
-      url: `http://localhost:5006/${TempFile.path}`,
-    });
-    if (err) return console.log(err);
+  res.status(200).json({
+    uploaded: true,
+    url: `http://localhost:5001/${path}`,
   });
 };
 
@@ -28,7 +26,6 @@ export const createNewProduct = async (req, res, next) => {
       description,
     });
 
-    console.log("newProduct", newProduct);
     // Update User ownerProducts
     await UserModel.findByIdAndUpdate(
       newProduct.seller._id,
@@ -36,9 +33,10 @@ export const createNewProduct = async (req, res, next) => {
       { $set: { claimed: true } }
     );
 
-    const productCreated = await ProductModel.findById(newProduct._id);
+    const productCreated = await ProductModel.findById(newProduct._id).populate(
+      "seller"
+    );
 
-    console.log("productCreated", productCreated);
     res.status(200).json(productCreated);
   } catch (error) {
     console.log("There was an error creating the new product", error);
@@ -68,6 +66,11 @@ export const deleteProduct = async (req, res, next) => {
   try {
     const { productId } = req.params;
 
+    if (!mongoose.Types.ObjectId.isValid(productId)) {
+      res.status(400).json({ message: "Specified id is not valid" });
+      return;
+    }
+
     const productToDelete = await ProductModel.findByIdAndDelete({
       _id: productId,
     });
@@ -91,6 +94,11 @@ export const deleteProduct = async (req, res, next) => {
 
 export const getOneProduct = (req, res, next) => {
   const { productId } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(productId)) {
+    res.status(400).json({ message: "Specified id is not valid" });
+    return;
+  }
 
   ProductModel.findById(productId)
     .populate("seller")
