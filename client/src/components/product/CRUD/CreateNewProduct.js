@@ -28,7 +28,6 @@ function CreateNewProduct() {
     dispatch(createNewProduct(requestBody));
     dispatch(checkOwnerPage(userId));
     navigate(`/${userId}/page`);
-    // navigate(`/productList`);
   };
 
   return (

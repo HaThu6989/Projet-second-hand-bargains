@@ -5,13 +5,13 @@ import { getOneProduct } from "../../../redux/actions/ProductAction";
 import InfoUser from "./InfoUser";
 import InfoProduct from "./InfoProduct";
 
-function ProductPage() {
+function ProductPage({ allProducts }) {
   const { productId } = useParams();
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getOneProduct(productId));
-  }, [productId]);
+  }, [productId, allProducts]);
 
   const productSelected = useSelector(
     (state) => state.productReducer.productDetail

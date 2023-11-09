@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import deleteicon from "../../../assets/delete-icon.jpg";
+import deleteicon from "../../../assets/button/delete-icon.jpg";
 import { useDispatch } from "react-redux";
-import {
-  deleteProduct,
-  getAllProducts,
-} from "../../../redux/actions/ProductAction";
+import { deleteProduct } from "../../../redux/actions/ProductAction";
 import ModalConfirmDelete from "./ModalConfirmDelete";
 
 function DeleteProduct(props) {

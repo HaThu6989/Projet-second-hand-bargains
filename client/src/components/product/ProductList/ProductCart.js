@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import IsFavourite from "./IsFavourite";
-import noPicture from "../../../assets/no-picture.png";
+import noPicture from "../../../assets/products/no-picture.png";
 import colorsData from "./ColorsFirstLetterUsername.json";
 import { AuthContext } from "../../../context/auth.context";
 import { useDispatch } from "react-redux";
@@ -32,7 +32,6 @@ function ProductCart(props) {
   const getFirstImage = (productDescription) => {
     // Sử dụng DOMParser để phân tích chuỗi HTML
     const descriptionHTML = new DOMParser().parseFromString(
-      // product?.description,
       productDescription,
       "text/html"
     );
@@ -96,8 +95,6 @@ function ProductCart(props) {
       <div className="date text-ellipsis">{dateFormated}</div>
     </div>
   );
-
-  // return <div>ProductCart</div>;
 }
 
 export default ProductCart;
