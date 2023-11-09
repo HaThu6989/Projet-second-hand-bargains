@@ -17,5 +17,6 @@ export const getAllProducts = () => APIPrivate.get("/product/allProducts");
 export const getOneProduct = (id) => APIPublic.get(`/product/${id}`);
 export const createNewProduct = (request) =>
   APIPrivate.post("/product/createNewProduct", request);
-export const updateProduct = (id) => APIPrivate.put(`/product/${id}`);
+export const updateProduct = (id, request) =>
+  APIPrivate.put(`/product/${id}`, request);
 export const deleteProduct = (id) => APIPrivate.delete(`/product/${id}`);
