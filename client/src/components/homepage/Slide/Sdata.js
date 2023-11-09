@@ -1,6 +1,6 @@
-import slide1 from "../../../assets/images/slide/slide-1.png";
-import slide2 from "../../../assets/images/slide/slide-2.png";
-import slide3 from "../../../assets/images/slide/slide-3.png";
+import slide1 from "../../../assets/slide/slide-1.png";
+import slide2 from "../../../assets/slide/slide-2.png";
+import slide3 from "../../../assets/slide/slide-3.png";
 
 const Sdata = [
   {

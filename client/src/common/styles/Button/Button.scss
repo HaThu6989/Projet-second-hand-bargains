@@ -1,11 +1,12 @@
-.button-delete{
+.button-update,
+.button-delete {
   background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 
-  img{
+  img {
     width: 20px;
   }
 }

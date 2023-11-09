@@ -1,14 +1,14 @@
 @import "../homepage/Slide/Slider.scss";
-@import "../homepage/CartsCategory/Carts.scss";
+@import "../homepage/CartsCategory/CartsCategory.scss";
 @import "../homepage/Slogan/Slogan.scss";
 
-.container-homepage{
+.container-homepage {
   display: flex;
   flex-direction: column;
 }
 
-@media (max-width: 996px) { 
-  .container-homepage{
+@media (max-width: 996px) {
+  .container-homepage {
     margin: 0 1em 0 1em;
   }
 }
