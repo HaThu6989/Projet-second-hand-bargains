@@ -47,6 +47,24 @@ export const createNewProduct = async (req, res, next) => {
   }
 };
 
+// Update product
+export const updateProduct = (req, res, next) => {
+  const { productId } = req.params;
+
+  console.log("productId", productId);
+  if (!mongoose.Types.ObjectId.isValid(productId)) {
+    res.status(400).json({ message: "Specified id is not valid" });
+    return;
+  }
+
+  ProductModel.findByIdAndUpdate(productId, req.body, { new: true })
+    .then((productUpdated) => res.status(200).json(productUpdated))
+    .catch((error) => {
+      console.log("Error updating product", error);
+      res.status(400).json(error);
+    });
+};
+
 export const getAllProducts = (req, res, next) => {
   ProductModel.find()
     .populate("seller")
