@@ -1,13 +1,13 @@
 import React from "react";
-import CartCategory from "./Cart";
+import CartCategory from "./CartCategory";
 
-const Carts = () => {
+const CartsCategory = () => {
   return (
     <>
       <div className="container-cart-category">
         <div className="heading">
           <i className="fa-solid fa-border-all"></i>
-          <h2>All categories </h2>
+          <h2>Toutes les catégories </h2>
         </div>
         <CartCategory />
       </div>
@@ -15,4 +15,4 @@ const Carts = () => {
   );
 };
 
-export default Carts;
+export default CartsCategory;

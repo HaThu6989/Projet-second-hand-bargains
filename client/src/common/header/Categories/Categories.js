@@ -1,52 +1,43 @@
 import React from "react";
-import bookIcon from "../../../assets/images/category-icon/bookIcon.png";
-import childrenIcon from "../../../assets/images/category-icon/childrenIcon.png";
-import dressIcon from "../../../assets/images/category-icon/dressIcon.png";
-import electroIcon from "../../../assets/images/category-icon/electroIcon.png";
-import instrumentIcon from "../../../assets/images/category-icon/instrumentIcon.png";
-import tableIcon from "../../../assets/images/category-icon/tableIcon.png";
-import otherIcon from "../../../assets/images/category-icon/otherIcon.png";
+import { Link } from "react-router-dom";
+import bookIcon from "../../../assets/category-icon/bookIcon.png";
+import childrenIcon from "../../../assets/category-icon/childrenIcon.png";
+import dressIcon from "../../../assets/category-icon/dressIcon.png";
+import electroIcon from "../../../assets/category-icon/electroIcon.png";
+import tableIcon from "../../../assets/category-icon/tableIcon.png";
+import otherIcon from "../../../assets/category-icon/otherIcon.png";
+import categoriesData from "../../../common/data/category.json";
 
-const Categories = () => {
-  const data = [
-    {
-      cateImg: electroIcon,
-      cateName: "Electronic",
-    },
-    // {
-    //   cateImg: instrumentIcon,
-    //   cateName: "Musique",
-    // },
-    {
-      cateImg: dressIcon,
-      cateName: "Vêtements",
-    },
-    {
-      cateImg: childrenIcon,
-      cateName: "Enfants",
-    },
-    {
-      cateImg: bookIcon,
-      cateName: "Livres",
-    },
-    {
-      cateImg: tableIcon,
-      cateName: "Ameublement",
-    },
-    {
-      cateImg: otherIcon,
-      cateName: "Autres",
-    },
-  ];
+const Categories = ({ setOpenCategoriesList }) => {
+  const images = {
+    electromenager: electroIcon,
+    vetements: dressIcon,
+    enfants: childrenIcon,
+    livres: bookIcon,
+    ameublement: tableIcon,
+    autres: otherIcon,
+  };
+
+  const { categories } = categoriesData;
+  const categoriesWithImages = categories.map((category) => ({
+    ...category,
+    img: images[category.img],
+  }));
 
   return (
     <>
       <div className="category-list">
-        {data.map((value, index) => {
+        {categoriesWithImages.map((elm, index) => {
           return (
-            <div className="box f_flex" key={index}>
-              <img src={value.cateImg} alt="" />
-              <span>{value.cateName}</span>
+            <div key={index}>
+              <Link
+                className="box f_flex"
+                to={`/productList?category=${elm.cateSearch}`}
+                onClick={() => setOpenCategoriesList(false)}
+              >
+                <img src={elm.img} alt="" />
+                <span>{elm.name}</span>
+              </Link>
             </div>
           );
         })}
