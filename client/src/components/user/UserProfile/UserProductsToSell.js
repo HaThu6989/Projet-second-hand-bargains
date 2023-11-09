@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import DeleteProduct from "../../product/CRUD/DeleteProduct";
+import updateIcon from "../../../assets/button/edit-icon.jpg";
 
-function UserProductsToSell({ userDetail, productsOfOneUser, isOwnerPage }) {
+function UserProductsToSell({ userDetail, isOwnerPage }) {
   return (
     <div className="user-list-products">
       <div className="container-title">
@@ -32,11 +33,21 @@ function UserProductsToSell({ userDetail, productsOfOneUser, isOwnerPage }) {
                 </td>
                 <td className="price">{elm.price}€</td>
                 {isOwnerPage && (
-                  <td className="delete">
-                    <DeleteProduct
-                      userDetail={userDetail}
-                      productSelected={elm}
-                    />
+                  <td className="delete-update-container">
+                    <div className="delete-update">
+                      <DeleteProduct
+                        userDetail={userDetail}
+                        productSelected={elm}
+                      />
+                      <Link
+                        to={`/productList/${elm._id}/update`}
+                        state={{ data: elm }}
+                        className="button-update"
+                        title="Editer"
+                      >
+                        <img src={updateIcon} />
+                      </Link>
+                    </div>
                   </td>
                 )}
               </tr>

@@ -35,7 +35,6 @@ function UpdateUser() {
       numberPhone,
     };
 
-    console.log("request", request);
     dispatch(updateUser(userId, request));
     dispatch(getUserDetail(userId));
     navigate(`/${userId}/page`);

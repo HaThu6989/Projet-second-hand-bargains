@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import deleteicon from "../../../assets/delete-icon.jpg";
+import deleteicon from "../../../assets/button/delete-icon.jpg";
 import ModalConfirmDelete from "../../product/CRUD/ModalConfirmDelete";
 import { getUserDetail, updateUser } from "../../../redux/actions/UserAction";
 import { Link } from "react-router-dom";
