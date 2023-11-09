@@ -1,0 +1,34 @@
+{
+  "categories": [
+    {
+      "img": "electromenager",
+      "name": "Electromenager",
+      "cateSearch": "electromenager"
+    },
+    {
+      "img": "vetements",
+      "name": "Vêtements",
+      "cateSearch": "vetements"
+    },
+    {
+      "img": "enfants",
+      "name": "Enfants",
+      "cateSearch": "enfants"
+    },
+    {
+      "img": "livres",
+      "name": "Livres",
+      "cateSearch": "livres"
+    },
+    {
+      "img": "ameublement",
+      "name": "Ameublement",
+      "cateSearch": "ameublement"
+    },
+    {
+      "img": "autres",
+      "name": "Autres",
+      "cateSearch": "autres"
+    }
+  ]
+}
