@@ -6,9 +6,9 @@ import reportWebVitals from "./reportWebVitals";
 import { AuthProviderWrapper } from "./context/auth.context.js";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import { getAllProducts } from "./redux/actions/ProductAction";
+// import { getAllProducts } from "./redux/actions/ProductAction";
 
-store.dispatch(getAllProducts());
+// store.dispatch(getAllProducts());
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
