@@ -15,7 +15,8 @@ function NavLinkMenu({ allProducts }) {
   return (
     <div className="left-navlink">
       <ul
-        className={mobileMenu ? "nav-links-mobile" : "link f_flex capitalize"}
+        className={mobileMenu ? "nav-links-mobile" : "link"}
+        // className="link"
         onClick={() => setMobileMenu(false)}
       >
         {isLoggedIn && (
@@ -28,7 +29,7 @@ function NavLinkMenu({ allProducts }) {
           <Link
             to="/productList"
             onClick={() => {
-              return dispatch(getAllProducts());
+              dispatch(getAllProducts());
             }}
           >
             Annonces
@@ -68,7 +69,7 @@ function NavLinkMenu({ allProducts }) {
 
       <button className="toggle" onClick={() => setMobileMenu(!mobileMenu)}>
         {mobileMenu ? (
-          <i className="fas fa-times close home-btn"></i>
+          <i className="fas fa-times close"></i>
         ) : (
           <i className="fas fa-bars open"></i>
         )}

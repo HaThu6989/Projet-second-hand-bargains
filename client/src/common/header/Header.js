@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/slogan/logo.png";
 import Categories from "./Categories/Categories";
 import Search from "./Search/Search";
 import NavLinkMenu from "./NavLinkMenu/NavLinkMenu";
@@ -26,10 +26,15 @@ function Header({ allProducts }) {
             </button>
           </div>
 
-          <Search />
+          <Search allProducts={allProducts} />
         </div>
         <NavLinkMenu allProducts={allProducts} />
-        {openCategoriesList && <Categories allProducts={allProducts} />}
+        {openCategoriesList && (
+          <Categories
+            allProducts={allProducts}
+            setOpenCategoriesList={setOpenCategoriesList}
+          />
+        )}
       </header>
     </>
   );

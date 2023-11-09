@@ -1,6 +1,6 @@
 import React from "react";
-import earthreusemin from "../../../assets/earth-reuse-min.png";
-import reuseit2 from "../../../assets/reuseit2.png";
+import earthreusemin from "../../../assets/slogan/earth-reuse-min.png";
+import reuseit2 from "../../../assets/slogan/reuseit2.png";
 
 function Slogan() {
   return (

@@ -1,53 +1,53 @@
-@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
 
-.container-slogan{
-  background: linear-gradient(to right, #43c6ac, #f8ffae);   height: 300px;
+.container-slogan {
+  background: linear-gradient(to right, #86ecd8, #f8ffae);
+  height: 300px;
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-top: 10px;
 
-  .left-slogan{
+  .left-slogan {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
     height: 100%;
-    width: 70%;  
+    width: 70%;
     margin-right: 30px;
     .title {
-      font-family: 'Sacramento', cursive;
+      font-family: "Sacramento", cursive;
       font-size: 100px;
       line-height: 1em;
       text-align: center;
-      color: #227256;
+      color: #227257;
       margin-bottom: 20px;
     }
-    .reuse-slogan{
+    .reuse-slogan {
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: flex-end;
-      img{
+      img {
         width: 10em;
-      } 
-      h4{
+      }
+      h4 {
         font-size: 25px;
         line-height: 1em;
         text-align: center;
-        color: #83811b; 
+        color: #9b6d46;
         padding-top: 10px;
       }
     }
-
   }
-  img{
+  img {
     width: 20em;
   }
 }
 
 @media (max-width: 900px) {
-  .container-slogan{
+  .container-slogan {
     visibility: hidden;
     height: 0;
   }
