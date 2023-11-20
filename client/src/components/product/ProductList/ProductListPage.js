@@ -17,17 +17,19 @@ const ProductListPage = ({ allProducts }) => {
     dispatch(getUserDetail(user?._id));
   }, [user]);
 
-  const productListToRender = allProducts.filter((elm) => {
-    if (searchQuery) {
-      return elm.name.toLowerCase().includes(searchQuery.toLowerCase());
-    } else if (searchCategory) {
-      return elm.category === searchCategory;
-    } else if (!searchCategory && !searchCategory) {
-      return elm;
-    } else {
-      return null;
-    }
-  });
+  const productListToRender = allProducts
+    .filter((elm) => {
+      if (searchQuery) {
+        return elm.name.toLowerCase().includes(searchQuery.toLowerCase());
+      } else if (searchCategory) {
+        return elm.category === searchCategory;
+      } else if (!searchCategory && !searchCategory) {
+        return elm;
+      } else {
+        return null;
+      }
+    })
+    .sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
 
   return (
     <div className="product-list-page-container">
