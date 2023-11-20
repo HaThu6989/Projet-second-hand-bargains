@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import ProductModel from "../../src/models/Product.model.js";
 import UserModel from "../../src/models/User.model.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 // Upload image
 export const uploadImage = (req, res, next) => {
@@ -9,7 +11,7 @@ export const uploadImage = (req, res, next) => {
 
   res.status(200).json({
     uploaded: true,
-    url: `http://localhost:5001/${path}`,
+    url: `http://localhost:${process.env.PORT}/${path}`,
   });
 };
 
