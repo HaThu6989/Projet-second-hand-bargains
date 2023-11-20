@@ -1,4 +1,4 @@
-import ProductModel from "../models/Product.model.js";
+import Product from "../models/Product.model.js";
 import mongoose from "mongoose";
 
 const isOwnerProduct = (req, res, next) => {
@@ -9,7 +9,7 @@ const isOwnerProduct = (req, res, next) => {
     return;
   }
 
-  ProductModel.findById(productId)
+  Product.findById(productId)
     .populate("seller")
     .then((productFromDB) => {
       const inputString = req.payloadAfterVerifyByExpressjwt._id;

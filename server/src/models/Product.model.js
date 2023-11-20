@@ -16,12 +16,6 @@ const productSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-    // usersLike: [
-    //   {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: "UserModel",
-    //   },
-    // ],
     category: {
       type: String,
       enum: [
@@ -30,9 +24,9 @@ const productSchema = new Schema(
         "enfants",
         "vetements",
         "livres",
-        "autre",
+        "autres",
       ],
-      default: "autre",
+      default: "autres",
     },
   },
   {
@@ -40,6 +34,6 @@ const productSchema = new Schema(
   }
 );
 
-const ProductModel = model("Product", productSchema);
+const Product = model("Product", productSchema);
 
-export default ProductModel;
+export default Product;
