@@ -11,6 +11,7 @@ import { getAllProducts } from "../../../redux/actions/ProductAction";
 function NavLinkMenu({ allProducts }) {
   const [mobileMenu, setMobileMenu] = useState(false);
   const { user, isLoggedIn, logOutUser } = useContext(AuthContext);
+
   const dispatch = useDispatch();
   return (
     <div className="left-navlink">
@@ -30,6 +31,7 @@ function NavLinkMenu({ allProducts }) {
             to="/productList"
             onClick={() => {
               dispatch(getAllProducts());
+              dispatch(checkOwnerPage(user?._id));
             }}
           >
             Annonces
@@ -46,11 +48,16 @@ function NavLinkMenu({ allProducts }) {
               <Link
                 to={`/${user?._id}/page`}
                 onClick={() => {
-                  dispatch(getUserDetail(user?._id));
-                  dispatch(checkOwnerPage(user?._id));
+                  return (
+                    dispatch(getUserDetail(user?._id)) &&
+                    dispatch(checkOwnerPage(user?._id))
+                  );
                 }}
               >
-                Votre compte
+                Bonjour{" "}
+                <span style={{ color: "#ff014f" }}>
+                  {user?.username ? user?.username : user?.email.toLowerCase()}
+                </span>
               </Link>
             </li>
           </>

@@ -80,6 +80,12 @@
 @media(max-width:430px) {
   .container-cart-category{
     margin-top: 30px;
+
+    .heading {
+      h2{
+        font-size:21px ;
+      }
+    }
   }
   .box-cart-category{
     grid-template-columns: repeat(1, 1fr);
