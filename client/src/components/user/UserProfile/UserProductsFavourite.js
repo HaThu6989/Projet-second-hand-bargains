@@ -48,7 +48,7 @@ function UserProductsFavourite({ userDetail }) {
           <tbody>
             {userDetail?.favouriteProducts.map((elm, index) => {
               return (
-                <tr>
+                <tr key={index}>
                   <td className="index"> {index + 1} </td>
                   <td className="name">
                     <Link

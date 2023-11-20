@@ -67,6 +67,7 @@ export const updateProduct = (req, res, next) => {
     });
 };
 
+// Get all Products
 export const getAllProducts = (req, res, next) => {
   ProductModel.find()
     .populate("seller")
@@ -82,6 +83,7 @@ export const getAllProducts = (req, res, next) => {
     });
 };
 
+// Delete Product
 export const deleteProduct = async (req, res, next) => {
   try {
     const { productId } = req.params;
@@ -112,6 +114,7 @@ export const deleteProduct = async (req, res, next) => {
   }
 };
 
+// Get one Product
 export const getOneProduct = (req, res, next) => {
   const { productId } = req.params;
 

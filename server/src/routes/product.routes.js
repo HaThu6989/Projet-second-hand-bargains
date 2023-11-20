@@ -15,7 +15,7 @@ const MuiltiPartyMiddleware = multiparty({ uploadDir: "./public/images" });
 
 const router = express();
 
-router.get("/allProducts", isAuthenticated, getAllProducts);
+router.get("/allProducts", getAllProducts);
 router.post("/createNewProduct", isAuthenticated, createNewProduct);
 router.put("/:productId", isAuthenticated, isOwnerProduct, updateProduct);
 router.delete("/:productId", isAuthenticated, isOwnerProduct, deleteProduct);

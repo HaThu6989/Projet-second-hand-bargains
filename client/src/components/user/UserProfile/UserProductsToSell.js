@@ -26,7 +26,7 @@ function UserProductsToSell({ userDetail, isOwnerPage }) {
         <tbody>
           {userDetail?.ownerProducts.map((elm, index) => {
             return (
-              <tr>
+              <tr key={index}>
                 <td className="index"> {index + 1} </td>
                 <td className="name">
                   <Link to={`/productList/${elm._id}`}>{elm.name}</Link>

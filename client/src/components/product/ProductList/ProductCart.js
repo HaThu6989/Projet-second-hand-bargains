@@ -68,12 +68,16 @@ function ProductCart(props) {
           {firstLetterUsernameSeller?.toUpperCase() || ".."}
         </div>
         <div className="seller-username text-ellipsis">
-          <Link
-            to={`/${product?.seller?._id}/page`}
-            onClick={() => dispatch(checkOwnerPage(product?.seller?._id))}
-          >
-            {product?.seller?.username}
-          </Link>
+          {user ? (
+            <Link
+              to={`/${product?.seller?._id}/page`}
+              onClick={() => dispatch(checkOwnerPage(product?.seller?._id))}
+            >
+              {product?.seller?.username}
+            </Link>
+          ) : (
+            product?.seller?.username
+          )}
         </div>
       </div>
 
@@ -87,9 +91,13 @@ function ProductCart(props) {
 
       {getFirstImage(product?.description)}
       <div className="title">
-        <Link to={`/productList/${product?._id}`}>
-          <div className="text-ellipsis">{product?.name}</div>
-        </Link>
+        {user ? (
+          <Link to={`/productList/${product?._id}`}>
+            <div className="text-ellipsis">{product?.name}</div>
+          </Link>
+        ) : (
+          product?.name
+        )}
       </div>
       <div className="price text-ellipsis">{product?.price}€</div>
       <div className="date text-ellipsis">{dateFormated}</div>

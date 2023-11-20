@@ -34,7 +34,7 @@ const APIPublic = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
 });
 
-export const getAllProducts = () => APIPrivate.get("/product/allProducts");
+export const getAllProducts = () => APIPublic.get("/product/allProducts");
 export const getOneProduct = (id) => APIPublic.get(`/product/${id}`);
 export const createNewProduct = (request) =>
   APIPrivate.post("/product/createNewProduct", request);
