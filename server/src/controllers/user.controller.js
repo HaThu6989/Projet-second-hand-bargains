@@ -66,8 +66,6 @@ export const login = (req, res, next) => {
     return;
   }
 
-  console.log("req.body", req.body);
-
   UserModel.findOne({ email })
     .then((foundUser) => {
       if (!foundUser) {
@@ -78,16 +76,13 @@ export const login = (req, res, next) => {
       const passwordCorrect = bcrypt.compareSync(password, foundUser.password);
 
       if (passwordCorrect) {
-        const { _id, email } = foundUser;
-        const payload = { _id, email };
+        const { _id, email, username } = foundUser;
+        const payload = { _id, email, username };
 
         const authToken = jwt.sign(payload, process.env.TOKEN_SECRET, {
           algorithm: "HS256",
           expiresIn: "6h",
         });
-
-        console.log("authToken", authToken);
-
         res.status(200).json({ authToken });
       } else {
         res.status(400).json({ message: "Password is not correct" });
@@ -106,6 +101,7 @@ export const verify = (req, res, next) => {
 /* Check is owner of page */
 export const checkOwnerPage = (req, res, next) => {
   const { userId } = req.params;
+
   if (!mongoose.Types.ObjectId.isValid(userId)) {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
