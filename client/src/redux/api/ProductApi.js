@@ -1,16 +1,37 @@
 import axios from "axios";
 
-const storedToken = localStorage.getItem("authToken");
+// Function to create a new axios instance with updated headers
+const createAPIPrivateInstance = (token) => {
+  return axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+// Function to get the stored token from localStorage
+const getStoredToken = () => {
+  return localStorage.getItem("authToken");
+};
+
+// Create the initial APIPrivate instance
+let APIPrivate = createAPIPrivateInstance(getStoredToken());
+
+// Request interceptor to update headers before each request
+APIPrivate.interceptors.request.use(
+  (config) => {
+    // Update the Authorization header with the latest token
+    config.headers.Authorization = `Bearer ${getStoredToken()}`;
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 const APIPublic = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
-});
-
-const APIPrivate = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
-  headers: {
-    Authorization: `Bearer ${storedToken}`,
-  },
 });
 
 export const getAllProducts = () => APIPrivate.get("/product/allProducts");
