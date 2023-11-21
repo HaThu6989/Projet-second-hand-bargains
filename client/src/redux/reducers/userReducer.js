@@ -4,6 +4,7 @@ import {
   GET_AUTHTOKEN,
   CHECK_OWNER_PAGE,
   GET_ALL_USERS,
+  DELETE_USER,
 } from "../actions/UserAction";
 
 const initialState = {
@@ -29,6 +30,13 @@ export const userReducer = (state = initialState, action) => {
       }
     case GET_ALL_USERS:
       return { ...state, allUsers: action.payload };
+    case DELETE_USER:
+      console.log("action.payload", action.payload);
+      const allUsersAfterDelete = state.allUsers.filter(
+        (elm) => elm._id !== action.payload
+      );
+      console.log("allUsersAfterDelete", allUsersAfterDelete);
+      return { ...state, allUsers: allUsersAfterDelete };
     default:
       return state;
   }

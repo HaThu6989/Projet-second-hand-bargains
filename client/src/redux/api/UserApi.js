@@ -39,8 +39,8 @@ export const getAllUsers = (adminId) =>
   APIPrivate.get(`/user/${adminId}/allUsers`);
 export const updateUser = (userId, request) =>
   APIPrivate.put(`/user/${userId}/update`, request);
-export const deleteUser = (userId) =>
-  APIPrivate.delete(`/user/${userId}/delete`);
+export const deleteUser = (adminId, userId) =>
+  APIPrivate.delete(`/user/${adminId}/deleteOneUser/${userId}`);
 export const checkOwnerPage = (userId) =>
   APIPrivate.get(`/user/${userId}/checkOwnerPage`);
 export const checkIsAdmin = (userId) =>

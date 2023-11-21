@@ -27,7 +27,7 @@ export const getAllUsers = (adminId) => async (dispatch) => {
   dispatch({ type: "GET_ALL_USERS", payload: allUsers.data });
 };
 
-export const deleteUser = (id) => async (dispatch) => {
-  const userDeletedId = await UserApi.deleteUser(id);
+export const deleteUser = (adminId, userSelectedId) => async (dispatch) => {
+  const userDeletedId = await UserApi.deleteUser(adminId, userSelectedId);
   dispatch({ type: "DELETE_USER", payload: userDeletedId.data });
 };
