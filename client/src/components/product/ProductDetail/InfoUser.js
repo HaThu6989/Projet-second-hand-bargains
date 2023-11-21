@@ -7,11 +7,21 @@ function InfoUser(props) {
   const { productSelected } = props;
   const dispatch = useDispatch();
 
+  const firstLetterUsernameSeller = productSelected?.seller?.username
+    ?.split("")[0]
+    ?.toLowerCase();
+
+  const firstLetterEmailSeller = productSelected?.seller?.email
+    ?.split("")[0]
+    ?.toLowerCase();
+
   return (
     <div className="info-seller-container">
       <div className="seller-slogan-username">
         <div className="seller-slogan">
-          {productSelected?.seller.username.split("")[0]}
+          {firstLetterUsernameSeller?.toUpperCase() ||
+            firstLetterEmailSeller?.toUpperCase() ||
+            ".."}
         </div>
         <div>
           <div className="seller-username">
@@ -21,7 +31,11 @@ function InfoUser(props) {
                 dispatch(checkOwnerPage(productSelected?.seller._id))
               }
             >
-              {productSelected?.seller.username}
+              <div className="text-ellipsis-card">
+                {productSelected?.seller?.username
+                  ? productSelected?.seller?.username
+                  : productSelected?.seller?.email}
+              </div>
             </Link>
           </div>
           <div> {productSelected?.seller.ownerProducts.length} annonce(s)</div>

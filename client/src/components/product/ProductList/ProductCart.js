@@ -27,7 +27,11 @@ function ProductCart(props) {
 
   const firstLetterUsernameSeller = product?.seller?.username
     ?.split("")[0]
-    .toLowerCase();
+    ?.toLowerCase();
+
+  const firstLetterEmailSeller = product?.seller?.email
+    ?.split("")[0]
+    ?.toLowerCase();
 
   const getFirstImage = (productDescription) => {
     // Sử dụng DOMParser để phân tích chuỗi HTML
@@ -41,15 +45,21 @@ function ProductCart(props) {
     if (imagesInDescriptionHTML.length > 0) {
       const firstImageURL = imagesInDescriptionHTML[0].getAttribute("src");
       return (
-        <div className="img-container have-img">
+        <Link
+          to={`/productList/${product?._id}`}
+          className="img-container have-img"
+        >
           <img src={firstImageURL} />
-        </div>
+        </Link>
       );
     } else {
       return (
-        <div className="img-container no-img">
+        <Link
+          to={`/productList/${product?._id}`}
+          className="img-container no-img"
+        >
           <img src={noPicture} />
-        </div>
+        </Link>
       );
     }
   };
@@ -65,18 +75,24 @@ function ProductCart(props) {
               "rgb(136, 198, 158)",
           }}
         >
-          {firstLetterUsernameSeller?.toUpperCase() || ".."}
+          {firstLetterUsernameSeller?.toUpperCase() ||
+            firstLetterEmailSeller?.toUpperCase() ||
+            ".."}
         </div>
-        <div className="seller-username text-ellipsis">
+        <div className="seller-username">
           {user ? (
             <Link
               to={`/${product?.seller?._id}/page`}
               onClick={() => dispatch(checkOwnerPage(product?.seller?._id))}
             >
-              {product?.seller?.username}
+              <div className="text-ellipsis-card">
+                {product?.seller?.username || product?.seller?.email}
+              </div>
             </Link>
           ) : (
-            product?.seller?.username
+            <div className="text-ellipsis-card">
+              {product?.seller?.username}
+            </div>
           )}
         </div>
       </div>
@@ -93,14 +109,14 @@ function ProductCart(props) {
       <div className="title">
         {user ? (
           <Link to={`/productList/${product?._id}`}>
-            <div className="text-ellipsis">{product?.name}</div>
+            <div className="text-ellipsis-card">{product?.name}</div>
           </Link>
         ) : (
-          product?.name
+          <div className="text-ellipsis-card">{product?.name}</div>
         )}
       </div>
-      <div className="price text-ellipsis">{product?.price}€</div>
-      <div className="date text-ellipsis">{dateFormated}</div>
+      <div className="price text-ellipsis-card">{product?.price}€</div>
+      <div className="date text-ellipsis-card">{dateFormated}</div>
     </div>
   );
 }

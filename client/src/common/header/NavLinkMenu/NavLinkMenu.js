@@ -18,7 +18,6 @@ function NavLinkMenu() {
     <div className="left-navlink">
       <ul
         className={mobileMenu ? "nav-links-mobile" : "link"}
-        // className="link"
         onClick={() => setMobileMenu(false)}
       >
         {isLoggedIn && (
@@ -60,6 +59,7 @@ function NavLinkMenu() {
             </li>
             <li>
               <Link
+                className="link-userprofile"
                 to={`/${user?._id}/page`}
                 onClick={() => {
                   return (
@@ -68,10 +68,12 @@ function NavLinkMenu() {
                   );
                 }}
               >
-                Bonjour{" "}
-                <span style={{ color: "#ff014f" }}>
-                  {user?.username ? user?.username : user?.email.toLowerCase()}
-                </span>
+                <div
+                  className="text-ellipsis-card"
+                  style={{ color: "#ff014f" }}
+                >
+                  {user?.username || user?.email}
+                </div>
               </Link>
             </li>
           </>

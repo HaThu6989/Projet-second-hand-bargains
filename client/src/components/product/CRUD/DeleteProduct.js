@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import deleteicon from "../../../assets/button/delete-icon.jpg";
 import { useDispatch } from "react-redux";
 import { deleteProduct } from "../../../redux/actions/ProductAction";
-import ModalConfirmDelete from "./ModalConfirmDelete";
+import ModalConfirmDelete from ".././../../common/CRUD/ModalConfirmDelete";
 
 function DeleteProduct(props) {
   const { productSelected } = props;

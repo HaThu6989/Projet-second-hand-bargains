@@ -2,21 +2,31 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function UserDetail({ userDetail, isOwnerPage }) {
+  const firstLetterUsernameSeller = userDetail?.username
+    ?.split("")[0]
+    ?.toLowerCase();
+
+  const firstLetterEmailSeller = userDetail?.email?.split("")[0]?.toLowerCase();
+
   return (
     <div className="user-detail">
       <div className="seller-slogan-username">
         <div className="seller-slogan">
-          {userDetail?.username?.split("")[0].toUpperCase()}
+          {firstLetterUsernameSeller?.toUpperCase() ||
+            firstLetterEmailSeller?.toUpperCase() ||
+            ".."}
         </div>
-        <h2 className="seller-username">
-          {userDetail?.username?.toUpperCase()}
+        <h2 className="seller-username text-ellipsis-table">
+          {userDetail?.username?.toUpperCase() || userDetail?.email}
         </h2>
       </div>
 
       <table className="user-detail-table">
         <tr>
           <th>Nom</th>
-          <td>{userDetail?.username}</td>
+          <td className="text-ellipsis-table username">
+            {userDetail?.username}
+          </td>
         </tr>
         <tr>
           <th>Email</th>

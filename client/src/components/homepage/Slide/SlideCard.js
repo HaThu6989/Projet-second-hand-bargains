@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import noPicture from "../../../assets/products/no-picture.png";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../context/auth.context";
 
 function SlideCard() {
+  const { user } = useContext(AuthContext);
   const allProducts = useSelector((state) => state.productReducer.allProducts);
 
   const productsToRender = allProducts
@@ -59,8 +61,14 @@ function SlideCard() {
               <div className="slide" key={index}>
                 <div className="left">
                   <p className="title-new">Nouvelle annonce</p>
-                  <p className="title-product">{product.name}</p>
-                  <Link to={`/productList/${product._id}`}>En détail</Link>
+                  <p className="title-product text-ellipsis-card">
+                    {product.name}
+                  </p>
+                  {user ? (
+                    <Link to={`/productList/${product._id}`}>En détail</Link>
+                  ) : (
+                    ""
+                  )}
                 </div>
                 {getFirstImage(product?.description)}
               </div>

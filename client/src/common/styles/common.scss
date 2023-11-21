@@ -1,2 +1,78 @@
 @import "../styles/Button/Button.scss";
+@import "../CRUD/styles/ModalConfirmDelete.scss";
 
+.text-ellipsis-card {
+  white-space: nowrap; /* Ngăn văn bản xuống dòng */
+  overflow: hidden; /* Ẩn nội dung vượt ra ngoài phần tử cha */
+  text-overflow: ellipsis; /* Thêm "..." khi văn bản quá dài */
+  width: 155px; /* Điều chỉnh chiều rộng tối đa của phần tử */
+}
+
+.text-ellipsis-table {
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  width: 30vw; 
+}
+
+.background {
+  background: #f6f9fc;
+  padding: 50px 0;
+}
+
+.d_flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.c_flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.f_flex {
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+li {
+  list-style: none;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.RText {
+  text-align-last: right;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+  background-color: none;
+}
+
+.icon-circle {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  background: #f3f5f9;
+  margin-left: 20px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.boxShadow {
+  box-shadow: rgb(43 52 69 / 10%) 0px 4px 16px;
+}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import deleteicon from "../../../assets/button/delete-icon.jpg";
-import ModalConfirmDelete from "../../product/CRUD/ModalConfirmDelete";
+import ModalConfirmDelete from "../../../common/CRUD/ModalConfirmDelete";
 import { getUserDetail, updateUser } from "../../../redux/actions/UserAction";
 import { Link } from "react-router-dom";
 
@@ -50,11 +50,8 @@ function UserProductsFavourite({ userDetail }) {
                 <tr key={index}>
                   <td className="index"> {index + 1} </td>
                   <td className="name">
-                    <Link
-                      to={`/productList/${elm._id}`}
-                      className="text-ellipsis"
-                    >
-                      {elm.name}
+                    <Link to={`/productList/${elm._id}`}>
+                      <div className="text-ellipsis-table">{elm.name}</div>
                     </Link>
                   </td>
                   <td className="price">{elm.price}€</td>

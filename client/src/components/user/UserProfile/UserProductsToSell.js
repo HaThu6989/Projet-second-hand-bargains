@@ -29,7 +29,9 @@ function UserProductsToSell({ userDetail, isOwnerPage }) {
               <tr key={index}>
                 <td className="index"> {index + 1} </td>
                 <td className="name">
-                  <Link to={`/productList/${elm._id}`}>{elm.name}</Link>
+                  <Link to={`/productList/${elm._id}`}>
+                    <div className="text-ellipsis-table">{elm.name}</div>
+                  </Link>
                 </td>
                 <td className="price">{elm.price}€</td>
                 {isOwnerPage && (

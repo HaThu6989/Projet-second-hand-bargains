@@ -56,8 +56,18 @@
 }
 
 @media (max-width: 730px) {
+  .user-detail {
+    h2 {
+      width: 300px;
+    }
+  }
   .user-detail-table {
     width: 350px;
+
+    .username {
+      width: 300px;
+    }
+
     tr {
       display: flex;
       flex-direction: column;

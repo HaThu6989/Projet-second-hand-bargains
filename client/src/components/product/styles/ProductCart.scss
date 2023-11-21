@@ -1,3 +1,5 @@
+
+
 .product-cart {
   position: relative;
   display: flex;
@@ -7,12 +9,7 @@
   width: 200px;
   gap: 8px;
 
-  .text-ellipsis {
-    white-space: nowrap; /* Ngăn văn bản xuống dòng */
-    overflow: hidden; /* Ẩn nội dung vượt ra ngoài phần tử cha */
-    text-overflow: ellipsis; /* Thêm "..." khi văn bản quá dài */
-    width: 200px; /* Điều chỉnh chiều rộng tối đa của phần tử */
-  }
+ 
   .seller-slogan-username-productList {
     display: flex;
     flex-direction: row;

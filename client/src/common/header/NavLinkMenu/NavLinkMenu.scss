@@ -9,7 +9,7 @@
         transition: 0.5s;
         font-size: 15px;
         font-weight: 400;
-        padding: 0.5rem;
+        padding: 0 0.3rem;
         border-radius: 0.5rem;
       }
 
@@ -20,6 +20,7 @@
   }
 }
 
+.nav-links-mobile,
 .link {
   display: flex;
   text-transform: capitalize;
@@ -30,7 +31,12 @@
   display: none;
 }
 
-@media (max-width: 1200px) {
+.link-userprofile{
+  display: flex;
+
+}
+
+@media (max-width: 1300px) {
   .link {
     display: none;
   }

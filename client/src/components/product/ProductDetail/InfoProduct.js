@@ -18,7 +18,7 @@ function InfoProduct(props) {
 
   return (
     <div className="info-product-container ">
-      <h2>{productSelected?.name}</h2>
+      <h2 className="text-ellipsis-table">{productSelected?.name}</h2>
       <div className="price">{productSelected?.price}€</div>
       <div className="date"> {dateFormated} </div>
     </div>
