@@ -4,7 +4,7 @@ import UserModel from "../../src/models/User.model.js";
 import dotenv from "dotenv";
 dotenv.config();
 
-// Upload image
+/* Upload image */
 export const uploadImage = (req, res, next) => {
   let tempFile = req.files.upload;
   let path = tempFile.path;
@@ -15,7 +15,7 @@ export const uploadImage = (req, res, next) => {
   });
 };
 
-// Create the new product
+/* Create the new product */
 export const createNewProduct = async (req, res, next) => {
   try {
     const { name, price, category, seller, description } = req.body;
@@ -28,7 +28,7 @@ export const createNewProduct = async (req, res, next) => {
       description,
     });
 
-    // Update User ownerProducts
+    /* Update User ownerProducts */
     await UserModel.findByIdAndUpdate(
       newProduct.seller._id,
       { $push: { ownerProducts: newProduct._id } },
@@ -49,7 +49,7 @@ export const createNewProduct = async (req, res, next) => {
   }
 };
 
-// Update product
+/* Update product */
 export const updateProduct = (req, res, next) => {
   const { productId } = req.params;
 
@@ -66,7 +66,7 @@ export const updateProduct = (req, res, next) => {
     });
 };
 
-// Get all Products
+/* Get all Products */
 export const getAllProducts = (req, res, next) => {
   ProductModel.find()
     .populate("seller")
@@ -82,7 +82,7 @@ export const getAllProducts = (req, res, next) => {
     });
 };
 
-// Delete Product
+/* Delete Product */
 export const deleteProduct = async (req, res, next) => {
   try {
     const { productId } = req.params;
@@ -113,7 +113,7 @@ export const deleteProduct = async (req, res, next) => {
   }
 };
 
-// Get one Product
+/* Get one Product */
 export const getOneProduct = (req, res, next) => {
   const { productId } = req.params;
 
