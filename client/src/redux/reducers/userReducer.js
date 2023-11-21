@@ -3,9 +3,11 @@ import {
   UPDATE_USER,
   GET_AUTHTOKEN,
   CHECK_OWNER_PAGE,
+  GET_ALL_USERS,
 } from "../actions/UserAction";
 
 const initialState = {
+  allUsers: null,
   userDetail: null,
   token: null,
   isOwnerPage: false,
@@ -25,6 +27,8 @@ export const userReducer = (state = initialState, action) => {
       } else {
         return { ...state, isOwnerPage: true };
       }
+    case GET_ALL_USERS:
+      return { ...state, allUsers: action.payload };
     default:
       return state;
   }

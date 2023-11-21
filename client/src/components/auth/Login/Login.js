@@ -19,6 +19,7 @@ function Login() {
     axios
       .post(`${process.env.REACT_APP_API_URL}/user/login`, requestBody)
       .then((response) => {
+        console.log("response.data", response.data);
         const jwt = response.data.authToken;
         storeToken(jwt);
         authenticateUser();

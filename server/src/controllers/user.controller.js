@@ -8,7 +8,7 @@ dotenv.config();
 
 const saltRounds = 10;
 
-// Signup
+/* Signup */
 export const signup = (req, res, next) => {
   const { email, password } = req.body;
   if (email === "" || password === "") {
@@ -57,7 +57,7 @@ export const signup = (req, res, next) => {
     });
 };
 
-// Login
+/* Login */
 export const login = (req, res, next) => {
   const { email, password } = req.body;
 
@@ -83,7 +83,12 @@ export const login = (req, res, next) => {
           algorithm: "HS256",
           expiresIn: "6h",
         });
-        res.status(200).json({ authToken });
+
+        if (email === "admin@gmail.com") {
+          res.status(200).json({ authToken: authToken, isAdmin: true });
+        } else {
+          res.status(200).json({ authToken: authToken, isAdmin: false });
+        }
       } else {
         res.status(400).json({ message: "Password is not correct" });
       }
@@ -170,6 +175,21 @@ export const userDetail = (req, res, next) => {
     .catch((err) => {
       console.log("error getting one user in DB", err);
       next(err);
+    });
+};
+
+/* Get all users */
+export const getAllUsers = (req, res, next) => {
+  UserModel.find()
+    .then((usersArray) => {
+      res.status(200).json(usersArray);
+    })
+    .catch((error) => {
+      console.log(
+        "There was an error getting the user list from the database:",
+        error
+      );
+      next(error);
     });
 };
 

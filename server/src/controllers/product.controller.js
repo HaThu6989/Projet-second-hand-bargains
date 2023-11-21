@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Product from "../../src/models/Product.model.js";
+import ProductModel from "../../src/models/Product.model.js";
 import UserModel from "../../src/models/User.model.js";
 import dotenv from "dotenv";
 dotenv.config();
@@ -20,7 +20,7 @@ export const createNewProduct = async (req, res, next) => {
   try {
     const { name, price, category, seller, description } = req.body;
 
-    const newProduct = await Product.create({
+    const newProduct = await ProductModel.create({
       name,
       price,
       category,
@@ -35,7 +35,7 @@ export const createNewProduct = async (req, res, next) => {
       { $set: { claimed: true } }
     );
 
-    const productCreated = await Product.findById(newProduct._id).populate(
+    const productCreated = await ProductModel.findById(newProduct._id).populate(
       "seller"
     );
 
@@ -53,13 +53,12 @@ export const createNewProduct = async (req, res, next) => {
 export const updateProduct = (req, res, next) => {
   const { productId } = req.params;
 
-  console.log("productId", productId);
   if (!mongoose.Types.ObjectId.isValid(productId)) {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
   }
 
-  Product.findByIdAndUpdate(productId, req.body, { new: true })
+  ProductModel.findByIdAndUpdate(productId, req.body, { new: true })
     .then((productUpdated) => res.status(200).json(productUpdated))
     .catch((error) => {
       console.log("Error updating product", error);
@@ -69,7 +68,7 @@ export const updateProduct = (req, res, next) => {
 
 // Get all Products
 export const getAllProducts = (req, res, next) => {
-  Product.find()
+  ProductModel.find()
     .populate("seller")
     .then((productsArray) => {
       res.status(200).json(productsArray);
@@ -93,7 +92,7 @@ export const deleteProduct = async (req, res, next) => {
       return;
     }
 
-    const productToDelete = await Product.findByIdAndDelete({
+    const productToDelete = await ProductModel.findByIdAndDelete({
       _id: productId,
     });
 
@@ -123,7 +122,7 @@ export const getOneProduct = (req, res, next) => {
     return;
   }
 
-  Product.findById(productId)
+  ProductModel.findById(productId)
     .populate("seller")
     .then((productDetail) => {
       res.status(200).json(productDetail);

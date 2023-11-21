@@ -140,7 +140,7 @@
   }
 }
 
-@media(max-width:650px){
+@media(max-width:1000px){
   .container-auth{
     flex-direction: column;
     .title-auth{
@@ -158,9 +158,11 @@
   }
   .form-auth{
     padding-top: 20px;
-    padding-left: 30px;
+    padding-left: 0;
     width: 100%;
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     form{
       .box-label-input{
         flex-direction: column;

@@ -4,13 +4,14 @@ import { useDispatch } from "react-redux";
 import { AuthContext } from "../../../context/auth.context";
 import {
   checkOwnerPage,
+  getAllUsers,
   getUserDetail,
 } from "../../../redux/actions/UserAction";
 import { getAllProducts } from "../../../redux/actions/ProductAction";
 
-function NavLinkMenu({ allProducts }) {
+function NavLinkMenu() {
   const [mobileMenu, setMobileMenu] = useState(false);
-  const { user, isLoggedIn, logOutUser } = useContext(AuthContext);
+  const { user, isLoggedIn, logOutUser, admin } = useContext(AuthContext);
 
   const dispatch = useDispatch();
   return (
@@ -23,6 +24,19 @@ function NavLinkMenu({ allProducts }) {
         {isLoggedIn && (
           <li>
             <Link to={`/${user?._id}/createNewProduct`}>Nouvelle annonce</Link>
+          </li>
+        )}
+        {admin && (
+          <li>
+            <Link
+              to={`/userList`}
+              onClick={() => {
+                console.log("admin?._id", admin?._id);
+                dispatch(getAllUsers(admin?._id));
+              }}
+            >
+              Utilisateurs
+            </Link>
           </li>
         )}
 

@@ -35,7 +35,13 @@ const APIPublic = axios.create({
 });
 
 export const getUserDetail = (userId) => APIPrivate.get(`/user/${userId}`);
+export const getAllUsers = (adminId) =>
+  APIPrivate.get(`/user/${adminId}/allUsers`);
 export const updateUser = (userId, request) =>
   APIPrivate.put(`/user/${userId}/update`, request);
+export const deleteUser = (userId) =>
+  APIPrivate.delete(`/user/${userId}/delete`);
 export const checkOwnerPage = (userId) =>
   APIPrivate.get(`/user/${userId}/checkOwnerPage`);
+export const checkIsAdmin = (userId) =>
+  APIPrivate.get(`/user/${userId}/checkIsAdmin`);

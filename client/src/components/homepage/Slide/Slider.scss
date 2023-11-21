@@ -28,7 +28,7 @@
 
     a {
       background: #e94560;
-      padding: 10px 20px;
+      padding: 8px 10px;
       font-weight: bold;
       color: #fff;
       border-radius: 5px;
@@ -92,12 +92,10 @@
   }
 }
 
-
-
 @media (max-width: 990px) {
   .container-slides {
     padding: 0;
-    height: 200px;
+    height: 216px;
     
     .img-container  {
       width: 100px;

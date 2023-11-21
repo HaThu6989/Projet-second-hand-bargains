@@ -7,6 +7,7 @@ function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [admin, setAdmin] = useState(null);
 
   useEffect(() => {
     authenticateUser();
@@ -29,6 +30,9 @@ function AuthProviderWrapper(props) {
           setIsLoggedIn(true);
           setIsLoading(false);
           setUser(user);
+          if (user?.email === "admin@gmail.com") {
+            return setAdmin(user);
+          }
         })
         .catch((error) => {
           setIsLoggedIn(false);
@@ -49,6 +53,7 @@ function AuthProviderWrapper(props) {
   const logOutUser = () => {
     removeToken();
     authenticateUser();
+    setAdmin("");
   };
 
   return (
@@ -60,6 +65,7 @@ function AuthProviderWrapper(props) {
         storeToken,
         authenticateUser,
         logOutUser,
+        admin,
       }}
     >
       {props.children}

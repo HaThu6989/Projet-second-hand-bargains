@@ -15,8 +15,6 @@ function SlideCard() {
     })
     .slice(0, 3);
 
-  console.log("productsToRender", productsToRender);
-
   const settings = {
     dots: true,
     infinite: true,

@@ -5,8 +5,12 @@ function UserDetail({ userDetail, isOwnerPage }) {
   return (
     <div className="user-detail">
       <div className="seller-slogan-username">
-        <div className="seller-slogan">{userDetail?.username.split("")[0]}</div>
-        <h2 className="seller-username">{userDetail?.username}</h2>
+        <div className="seller-slogan">
+          {userDetail?.username?.split("")[0].toUpperCase()}
+        </div>
+        <h2 className="seller-username">
+          {userDetail?.username?.toUpperCase()}
+        </h2>
       </div>
 
       <table className="user-detail-table">

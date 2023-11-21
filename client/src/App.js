@@ -13,6 +13,7 @@ import ProductPage from "./components/product/ProductDetail/ProductPage";
 import UpdateProduct from "./components/product/CRUD/UpdateProduct";
 import { useEffect } from "react";
 import { getAllProducts } from "./redux/actions/ProductAction";
+import UserList from "./components/user/UserList/UserList";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function App() {
             path="/productList"
             element={<ProductListPage allProducts={allProducts} />}
           />
+          <Route path="/userList" element={<UserList />} />
           <Route path="/:userId/page" element={<UserPage />} />
           <Route
             path="/:userId/createNewProduct"
