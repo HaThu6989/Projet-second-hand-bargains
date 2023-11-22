@@ -42,7 +42,7 @@ function ProductCart(props) {
 
     const imagesInDescriptionHTML = descriptionHTML.querySelectorAll("img");
 
-    if (imagesInDescriptionHTML.length > 0) {
+    if (user && imagesInDescriptionHTML.length > 0) {
       const firstImageURL = imagesInDescriptionHTML[0].getAttribute("src");
       return (
         <Link
@@ -52,7 +52,7 @@ function ProductCart(props) {
           <img src={firstImageURL} />
         </Link>
       );
-    } else {
+    } else if (user && imagesInDescriptionHTML.length === 0) {
       return (
         <Link
           to={`/productList/${product?._id}`}
@@ -60,6 +60,19 @@ function ProductCart(props) {
         >
           <img src={noPicture} />
         </Link>
+      );
+    } else if (!user && imagesInDescriptionHTML.length > 0) {
+      const firstImageURL = imagesInDescriptionHTML[0].getAttribute("src");
+      return (
+        <div className="img-container have-img">
+          <img src={firstImageURL} />
+        </div>
+      );
+    } else {
+      return (
+        <div className="img-container no-img">
+          <img src={noPicture} />
+        </div>
       );
     }
   };

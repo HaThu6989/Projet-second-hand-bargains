@@ -14,11 +14,12 @@
     font-size: 2em;
     color: rgb(98, 178, 151);
   }
+
   form{
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    width:50vw;
+    width:60vw;
     .box-label-input{
       display: flex;
       align-items: first baseline;
@@ -52,29 +53,16 @@
   }
 }
 
-@media(min-width:400px){
-  .description-mobile{
-  display: none;
-}
-}
-
-
-@media(max-width:400px){
+@media(max-width:420px){
   .container-CU-product{
-    align-items: start;
+    width: 90vw;
     .title-CU-product{
-      font-size: 1.6em;
+      font-size: 1.4em;
+    }
+    form{
+    width: 83vw;
     }
   }
-  .description{
-    display: none;
-  }
-  .description-mobile{
-    color: red;
-    width: 300px;
-    font-style: italic;
-  }
-
   .box-label-input{
     flex-direction: column;
   }

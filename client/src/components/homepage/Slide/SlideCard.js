@@ -61,7 +61,7 @@ function SlideCard() {
               <div className="slide" key={index}>
                 <div className="left">
                   <p className="title-new">Nouvelle annonce</p>
-                  <p className="title-product text-ellipsis-card">
+                  <p className="text-ellipsis-card title-product">
                     {product.name}
                   </p>
                   {user ? (

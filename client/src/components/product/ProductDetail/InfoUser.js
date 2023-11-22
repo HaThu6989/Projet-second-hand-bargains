@@ -31,14 +31,20 @@ function InfoUser(props) {
                 dispatch(checkOwnerPage(productSelected?.seller._id))
               }
             >
-              <div className="text-ellipsis-card">
+              <div className="text-ellipsis-card" style={{ width: "300px" }}>
                 {productSelected?.seller?.username
                   ? productSelected?.seller?.username
                   : productSelected?.seller?.email}
               </div>
             </Link>
           </div>
-          <div> {productSelected?.seller.ownerProducts.length} annonce(s)</div>
+          <div>
+            {" "}
+            {productSelected?.seller.ownerProducts.length}{" "}
+            {productSelected?.seller.ownerProducts.length > 1
+              ? "annonces"
+              : "annonce"}{" "}
+          </div>
         </div>
       </div>
 

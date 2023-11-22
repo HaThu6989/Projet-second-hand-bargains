@@ -95,10 +95,6 @@ function CreateNewProduct() {
             }}
           />
         </div>
-        <div className="description-mobile">
-          Pour ajouter la description de l'annonce, veuillez retourner vers la
-          version desktop.
-        </div>
         <button type="submit">Ajouter</button>
       </form>
     </div>

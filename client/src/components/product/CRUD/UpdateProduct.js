@@ -106,10 +106,6 @@ function UpdateProduct() {
             }}
           />
         </div>
-        <div className="description-mobile">
-          Pour mettre à jour la description de l'annonce, veuillez retourner
-          vers la version desktop.
-        </div>
         <button type="submit">Editer</button>
       </form>
     </div>
