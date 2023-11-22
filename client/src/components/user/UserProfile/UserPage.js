@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import UserDetail from "./UserDetail";
 import UserProductsToSell from "./UserProductsToSell";
 import UserProductsFavourite from "./UserProductsFavourite";
@@ -8,9 +8,11 @@ import {
   checkOwnerPage,
   getUserDetail,
 } from "../../../redux/actions/UserAction";
+import { AuthContext } from "../../../context/auth.context";
 
 function UserPage() {
   const { userId } = useParams();
+  const { setUser, user } = useContext(AuthContext);
   const userDetail = useSelector((state) => state.userReducer.userDetail);
   const dispatch = useDispatch();
   const isOwnerPage = useSelector((state) => state.userReducer.isOwnerPage);
@@ -24,6 +26,13 @@ function UserPage() {
     dispatch(checkOwnerPage(userId));
     dispatch(getUserDetail(userId));
   }, [userId]);
+
+  // Update user in AuthContext after userDetail === user is updated
+  useEffect(() => {
+    if (user?._id === userDetail?._id) {
+      setUser(userDetail);
+    }
+  }, [userDetail]);
 
   useEffect(() => {
     dispatch(getUserDetail(userId));

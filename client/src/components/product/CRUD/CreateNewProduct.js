@@ -66,13 +66,13 @@ function CreateNewProduct() {
             required={true}
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option value="autre">Choisir un type de catégorie</option>
+            <option value="">Choisir un type de catégorie</option>
             <option value="electromenager">Electromenager</option>
             <option value="ameublement">Ameublement</option>
             <option value="enfants">Enfants</option>
             <option value="vetements">Vêtements</option>
             <option value="livres">Livres</option>
-            <option value="autre">Autre</option>
+            <option value="autres">Autres</option>
           </select>
         </div>
         <div className="description">
@@ -94,6 +94,10 @@ function CreateNewProduct() {
               return setDescription(data);
             }}
           />
+        </div>
+        <div className="description-mobile">
+          Pour ajouter la description de l'annonce, veuillez retourner vers la
+          version desktop.
         </div>
         <button type="submit">Ajouter</button>
       </form>
