@@ -14,6 +14,7 @@ import UpdateProduct from "./components/product/CRUD/UpdateProduct";
 import { useEffect } from "react";
 import { getAllProducts } from "./redux/actions/ProductAction";
 import UserList from "./components/user/UserList/UserList";
+import IsPrivate from "./context/isPrivate";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,23 +31,56 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route
             path="/productList/:productId"
-            element={<ProductPage allProducts={allProducts} />}
+            element={
+              <IsPrivate>
+                <ProductPage allProducts={allProducts} />
+              </IsPrivate>
+            }
           />
           <Route
             path="/productList"
             element={<ProductListPage allProducts={allProducts} />}
           />
-          <Route path="/userList" element={<UserList />} />
-          <Route path="/:userId/page" element={<UserPage />} />
+          <Route
+            path="/userList"
+            element={
+              <IsPrivate>
+                <UserList />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="/:userId/page"
+            element={
+              <IsPrivate>
+                <UserPage />
+              </IsPrivate>
+            }
+          />
           <Route
             path="/:userId/createNewProduct"
-            element={<CreateNewProduct />}
+            element={
+              <IsPrivate>
+                <CreateNewProduct />
+              </IsPrivate>
+            }
           />
           <Route
             path="/productList/:productId/update"
-            element={<UpdateProduct />}
+            element={
+              <IsPrivate>
+                <UpdateProduct />
+              </IsPrivate>
+            }
           />
-          <Route path="/:userId/update" element={<UpdateUser />} />
+          <Route
+            path="/:userId/update"
+            element={
+              <IsPrivate>
+                <UpdateUser />
+              </IsPrivate>
+            }
+          />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
         </Routes>
