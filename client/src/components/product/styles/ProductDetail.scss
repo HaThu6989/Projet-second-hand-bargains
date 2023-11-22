@@ -67,6 +67,9 @@
     font-size: 25px;
     font-weight: 500;
     color: rgb(108, 149, 123);
+    .username{
+     width: 20vw;
+    }
     a:hover {
       text-decoration: underline;
     }
@@ -102,7 +105,7 @@
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .product-detail-container {
     padding: 15px;
   }
@@ -110,6 +113,13 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+  }
+  .seller-slogan-username { 
+      .seller-username {
+        .username{
+        width: 50vw;
+        }
+    }
   }
 }
 @media (max-width: 450px) {
@@ -120,4 +130,11 @@
       object-fit: contain;
     }
   }
+  .seller-slogan-username { 
+    .seller-username {
+      .username{
+      width: 60vw;
+      }
+  }
+}
 }

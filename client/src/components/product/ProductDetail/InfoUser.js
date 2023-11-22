@@ -31,7 +31,7 @@ function InfoUser(props) {
                 dispatch(checkOwnerPage(productSelected?.seller._id))
               }
             >
-              <div className="text-ellipsis-card" style={{ width: "300px" }}>
+              <div className="text-ellipsis-card username">
                 {productSelected?.seller?.username
                   ? productSelected?.seller?.username
                   : productSelected?.seller?.email}
