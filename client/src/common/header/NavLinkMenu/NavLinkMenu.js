@@ -70,7 +70,7 @@ function NavLinkMenu() {
               >
                 <div
                   className="text-ellipsis-card"
-                  style={{ color: "#ff014f" }}
+                  style={{ color: "#ff014f", width: "100px" }}
                 >
                   {user?.username || user?.email}
                 </div>

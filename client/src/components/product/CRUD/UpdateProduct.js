@@ -38,8 +38,6 @@ function UpdateProduct() {
     console.log("user", user);
     console.log("productId", productId);
     dispatch(updateProduct(productId, requestBody));
-    // dispatch(checkOwnerPage(user?._id));
-    // dispatch(updateProduct(productId, requestBody));
     navigate(`/productList/${productId}`);
   };
 
@@ -79,13 +77,13 @@ function UpdateProduct() {
             required={true}
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option value="autre">Choisir un type de catégorie</option>
+            <option value="">Choisir un type de catégorie</option>
             <option value="electromenager">Electromenager</option>
             <option value="ameublement">Ameublement</option>
             <option value="enfants">Enfants</option>
             <option value="vetements">Vêtements</option>
             <option value="livres">Livres</option>
-            <option value="autre">Autre</option>
+            <option value="autres">Autres</option>
           </select>
         </div>
         <div className="description">
@@ -107,6 +105,10 @@ function UpdateProduct() {
               return setDescription(data);
             }}
           />
+        </div>
+        <div className="description-mobile">
+          Pour mettre à jour la description de l'annonce, veuillez retourner
+          vers la version desktop.
         </div>
         <button type="submit">Editer</button>
       </form>

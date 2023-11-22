@@ -52,6 +52,13 @@
   }
 }
 
+@media(min-width:400px){
+  .description-mobile{
+  display: none;
+}
+}
+
+
 @media(max-width:400px){
   .container-CU-product{
     align-items: start;
@@ -60,8 +67,14 @@
     }
   }
   .description{
-    visibility: hidden;
+    display: none;
   }
+  .description-mobile{
+    color: red;
+    width: 300px;
+    font-style: italic;
+  }
+
   .box-label-input{
     flex-direction: column;
   }
