@@ -54,7 +54,7 @@ Après avoir téléchargé le référentiel, certaines choses doivent être conf
  
 Cela téléchargera et installera toutes les dépendances nécessaires pour exécuter correctement l'application.
  
-## Exécuter le serveur local
+## Exécution le serveur local
  
     npm start
  

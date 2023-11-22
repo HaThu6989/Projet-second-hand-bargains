@@ -3,7 +3,7 @@ Une application pour faciliter l’échange entre les personnes qui souhaitent v
 
 ## À propos
  
- Ce référentiel implémente frontend (ReactJs + Redux Thunk)
+ Ce référentiel implémente la côté frontend (ReactJs + Redux Thunk)
 
 ## Instructions
  
@@ -19,7 +19,7 @@ Pour exécuter sur votre ordinateur, suivez ces étapes :
 Après avoir téléchargé le référentiel, certaines choses doivent être configurées si nécessaire avant de pouvoir exécuter l'application dans le fichier `.env` file
 
 - Variable API de côté serveur : `REACT_APP_API_URL` (ex: http://localhost:5006)
-- Porte de côté client : `PORT` (http://localhost:3000 => port 3000 par défaut mais si vous souhaitez un autre port, vous changerez la variable `PORT`)
+- Port de côté client : `PORT` (http://localhost:3000 => port 3000 par défaut mais si vous souhaitez un autre port, vous changerez la variable `PORT`)
 
 
 ### Installation des dépendances
@@ -35,7 +35,7 @@ Cela téléchargera et installera toutes les dépendances nécessaires pour exé
 Ouvrez [http://localhost:3000](http://localhost:3000) pour l'afficher dans votre navigateur.
 
 La page se rechargera lorsque vous apporterez des modifications.\
-Vous pouvez également voir des erreurs de charpie dans la console.
+Vous pouvez également voir des erreurs dans la console.
 
 
 ## En savoir plus sur React
