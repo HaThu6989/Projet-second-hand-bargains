@@ -4,7 +4,7 @@ import {
   login,
   verify,
   updateUser,
-  userDetail,
+  getUserDetail,
   deleteUser,
   checkOwnerPage,
   getAllUsers,
@@ -19,7 +19,7 @@ router.post("/login", login);
 router.get("/verify", isAuthenticated, verify);
 router.get("/:userId/checkOwnerPage", isAuthenticated, checkOwnerPage);
 router.put("/:userId/update", isAuthenticated, updateUser);
-router.get("/:userId", isAuthenticated, userDetail);
+router.get("/:userId", isAuthenticated, getUserDetail);
 router.get("/:adminId/allUsers", isAuthenticated, isAdmin, getAllUsers);
 router.delete(
   "/:adminId/deleteOneUser/:userId",

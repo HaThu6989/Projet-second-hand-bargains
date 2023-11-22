@@ -158,7 +158,7 @@ export const updateUser = (req, res, next) => {
 };
 
 /* Get user detail */
-export const userDetail = (req, res, next) => {
+export const getUserDetail = (req, res, next) => {
   const { userId } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(userId)) {
