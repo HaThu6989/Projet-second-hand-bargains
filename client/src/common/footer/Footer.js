@@ -9,22 +9,22 @@ const Footer = () => {
           <div className="back-home">
             <h3>Second hand bargains</h3>
             <div className="link">
-              <Link>Come back home</Link>
-              <Link>Go to top</Link>
+              <Link>Page d'accueil</Link>
+              <Link>Aller en haut</Link>
             </div>
           </div>
           <div className="about-contact-us">
             <div className="box">
-              <h3>About Us</h3>
+              <h3>À propos de nous</h3>
               <div className="link">
-                <Link>Our Stores</Link>
-                <Link>Terms & Conditions</Link>
-                <Link>Privacy Policy</Link>
+                <Link>Notre application</Link>
+                <Link>Termes et conditions</Link>
+                <Link>Politique de confidentialité</Link>
               </div>
             </div>
 
             <div className="box">
-              <h3>Contact Us</h3>
+              <h3>Nous contacter</h3>
               <ul>
                 <li>2 Résidence Du Val, 91120 PALAISEAU</li>
                 <li>Email: htran@gmail.com</li>
