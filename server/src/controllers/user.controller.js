@@ -25,7 +25,7 @@ export const signup = (req, res, next) => {
   if (!passwordRegex.test(password)) {
     res.status(400).json({
       message:
-        "Password must have at least 6 characters and contain at least one number, one lowercase and one uppercase letter",
+        "Le mot de passe doit comporter au moins 6 caractères et inclure au moins un chiffre, une lettre minuscule et une lettre majuscule",
     });
     return;
   }
@@ -33,7 +33,7 @@ export const signup = (req, res, next) => {
   UserModel.findOne({ email })
     .then((foundUser) => {
       if (foundUser) {
-        res.status(400).json({ message: "User already exists" });
+        res.status(400).json({ message: "Utilisateur déjà existant" });
       }
       const salt = bcrypt.genSaltSync(saltRounds);
       const hashedPassword = bcrypt.hashSync(password, salt);
@@ -69,7 +69,7 @@ export const login = (req, res, next) => {
   UserModel.findOne({ email })
     .then((foundUser) => {
       if (!foundUser) {
-        res.status(401).json({ message: "User not found" });
+        res.status(401).json({ message: "Utilisateur non trouvé" });
         return;
       }
 
@@ -90,7 +90,7 @@ export const login = (req, res, next) => {
           res.status(200).json({ authToken: authToken, isAdmin: false });
         }
       } else {
-        res.status(400).json({ message: "Password is not correct" });
+        res.status(400).json({ message: "Le mot de passe n'est pas correct" });
       }
     })
     .catch((error) =>

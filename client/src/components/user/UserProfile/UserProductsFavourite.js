@@ -5,7 +5,7 @@ import ModalConfirmDelete from "../../../common/CRUD/ModalConfirmDelete";
 import { getUserDetail, updateUser } from "../../../redux/actions/UserAction";
 import { Link } from "react-router-dom";
 
-function UserProductsFavourite({ userDetail }) {
+function UserProductsFavourite({ userDetail, isOwnerPage }) {
   const [openModalDeleteFavourite, setOpenModalDeleteFavourite] =
     useState(false);
   const [productSelected, setProductSelected] = useState();
@@ -41,7 +41,7 @@ function UserProductsFavourite({ userDetail }) {
               <th className="index">#</th>
               <th className="name">Nom</th>
               <th className="price">Prix</th>
-              <th className="delete">Supp</th>
+              {isOwnerPage && <th className="delete">Supp</th>}
             </tr>
           </thead>
           <tbody>
@@ -55,20 +55,22 @@ function UserProductsFavourite({ userDetail }) {
                     </Link>
                   </td>
                   <td className="price">{elm.price}€</td>
-                  <td className="delete">
-                    <div>
-                      <button
-                        type="button"
-                        className="button-delete"
-                        onClick={() => handleShowDelete(elm)}
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="Supprimer"
-                      >
-                        <img src={deleteicon} />
-                      </button>
-                    </div>
-                  </td>
+                  {isOwnerPage && (
+                    <td className="delete">
+                      <div>
+                        <button
+                          type="button"
+                          className="button-delete"
+                          onClick={() => handleShowDelete(elm)}
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title="Supprimer"
+                        >
+                          <img src={deleteicon} />
+                        </button>
+                      </div>
+                    </td>
+                  )}
                 </tr>
               );
             })}

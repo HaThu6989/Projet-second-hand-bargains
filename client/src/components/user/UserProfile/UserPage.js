@@ -41,7 +41,10 @@ function UserPage() {
   return (
     <div className="container-user-page">
       <UserDetail userDetail={userDetail} isOwnerPage={isOwnerPage} />
-      {isOwnerPage && <UserProductsFavourite userDetail={userDetail} />}
+      <UserProductsFavourite
+        userDetail={userDetail}
+        isOwnerPage={isOwnerPage}
+      />
       <UserProductsToSell
         userDetail={userDetail}
         productsOfOneUser={productsOfOneUser}

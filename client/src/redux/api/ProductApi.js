@@ -3,9 +3,9 @@ import axios from "axios";
 // Function to create a new axios instance with updated headers
 const createAPIPrivateInstance = (token) => {
   return axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
+    baseURL: process.env.REACT_APP_API_URL, //URL de base API
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`, // entête de l'autorisation
     },
   });
 };

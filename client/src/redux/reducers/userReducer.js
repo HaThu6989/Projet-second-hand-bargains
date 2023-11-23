@@ -35,7 +35,6 @@ export const userReducer = (state = initialState, action) => {
       const allUsersAfterDelete = state.allUsers.filter(
         (elm) => elm._id !== action.payload
       );
-      console.log("allUsersAfterDelete", allUsersAfterDelete);
       return { ...state, allUsers: allUsersAfterDelete };
     default:
       return state;
