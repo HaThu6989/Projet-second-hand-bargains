@@ -1,5 +1,5 @@
 # Second Hand Bargains
-Une application pour faciliter l’échange entre les personnes qui souhaitent vendre ou acheter des anciens produits déjà utilisés.
+Une application pour faciliter l’échange entre les personnes qui souhaitent vendre et acheter des anciens produits déjà utilisés.
 
 ## À propos
  
@@ -43,6 +43,16 @@ Pour exécuter sur votre ordinateur, suivez ces étapes :
  
     git clone https://github.com/HaThu6989/Projet-second-hand-bargains 
     cd server/
+
+### Téléchargement des images
+
+Création d'un dossier `/public/images` dans le répertoire racine pour stocker des images.
+Assurez-vous que votre application a un dossier `public` à la racine de votre projet. Si ce dossier n'existe pas, créez-le.
+  - server
+    - public
+      - images
+    - ...
+
  
 ### Configuration d'environment variables
  

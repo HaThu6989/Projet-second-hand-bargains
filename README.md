@@ -1,5 +1,5 @@
 # Second Hand Bargains
-Une application pour faciliter l’échange entre les personnes qui souhaitent vendre ou acheter des anciens produits déjà utilisés.
+Une application pour faciliter l’échange entre les personnes qui souhaitent vendre et acheter des anciens produits déjà utilisés.
 
 ## À propos
  
@@ -9,5 +9,5 @@ Une application pour faciliter l’échange entre les personnes qui souhaitent v
 
 ## Instructions
  
-Pour exécuter sur votre ordinateur, suivez ces étapes dans le fichier `Readme.md` de chaque côté.
+Pour exécuter sur votre ordinateur, suivez ces étapes dans le fichier `README.md` de chaque côté.
  
